@@ -1,0 +1,23 @@
+{
+  "url": "http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#",
+  "timeouts": {
+    "appear_ms": 5000,
+    "loading_timeout_s": 60,
+    "poll_interval_s": 0.1
+  },
+  "browser": {
+    "headless": false,
+    "slow_mo_ms": 40
+  },
+  "playback": {
+    "action_delay_ms": 800,
+    "verbose_steps": true,
+    "final_pause_s": 12,
+    "require_keypress_end": false,
+    "single_record_interval_s": 0.25,
+    "zero_stock_mode": "mark"
+  },
+  "screenshots": {
+    "on_error": true
+  }
+}
