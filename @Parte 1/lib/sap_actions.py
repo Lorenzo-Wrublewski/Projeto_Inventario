@@ -133,8 +133,39 @@ class SapSession:
             wait_seconds(1, "Aguardando campo transação habilitar")
         log("Timeout aguardando campo de transação.", level="WARN")
 
+    def dismiss_system_messages_popup(self):
+        """Fecha o popup diário 'System Messages' caso esteja visível."""
+        try:
+            cancel_btn = self.page.get_by_title("Cancel (Escape)")
+            system_msgs_marker = self.page.locator("div").filter(has_text=re.compile(r"System Messages", re.I))
+            author_col = self.page.locator("div").filter(has_text=re.compile(r"Author", re.I))
+            message_text_col = self.page.locator("div").filter(has_text=re.compile(r"Message Text", re.I))
+
+            if (
+                (cancel_btn.is_visible() if cancel_btn else False)
+                or (system_msgs_marker.is_visible() if system_msgs_marker else False)
+                or (
+                    author_col.is_visible() and message_text_col.is_visible()
+                )
+            ):
+                narrar("Popup 'System Messages' detectado. Fechando (Escape).")
+                try:
+                    if cancel_btn.is_visible():
+                        cancel_btn.click()
+                    else:
+                        self.page.keyboard.press("Escape")
+                except Exception:
+                    try:
+                        self.page.keyboard.press("Escape")
+                    except Exception:
+                        pass
+                wait_seconds(0.5, "Fechando popup System Messages")
+        except Exception:
+            pass
+
     def open_transaction(self, code: str):
         narrar(f"Iniciando abertura da transação '{code}'")
+        self.dismiss_system_messages_popup()  # NOVO: garante fechamento do popup diário
         self.wait_transaction_field_ready()
         narrar(f"Digitando transação '{code}'")
         safe_fill(self.tx_field(), code, description="Campo transação")
