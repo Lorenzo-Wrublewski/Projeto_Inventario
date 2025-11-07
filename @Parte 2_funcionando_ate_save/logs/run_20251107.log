@@ -1,0 +1,644 @@
+2025-11-07 08:14:40,525 | INFO    | wait | Iniciando browser.
+2025-11-07 08:14:42,928 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-07 08:14:55,239 | INFO    | wait | Página estável.
+2025-11-07 08:14:55,416 | INFO    | wait | Mensagem inicial 'System Copy Refresh' detectada. Tentando fechar via ESC.
+2025-11-07 08:14:56,340 | INFO    | wait | Clique em 'Cancel (Escape)'.
+2025-11-07 08:14:56,364 | INFO    | wait | Abrindo transação: LI11N
+2025-11-07 08:14:56,402 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 08:14:58,789 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 08:15:00,075 | INFO    | wait | OK: Status livre
+2025-11-07 08:15:00,110 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-07 08:15:01,041 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (Tipo Deposito='H0A')...
+2025-11-07 08:15:02,028 | INFO    | wait | Registros DB (H0A): 14
+2025-11-07 08:15:02,058 | INFO    | wait | Lendo template: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-07 08:15:02,538 | ERROR   | wait | Erro leitura template: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+2025-11-07 08:15:02,569 | ERROR   | wait | [ERRO][UNKNOWN] Stage=fetch_counting_records | Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl. | Hint: Sem dica.
+2025-11-07 08:15:04,162 | INFO    | wait | Screenshot salva: err_unknown_20251107_081502.png
+2025-11-07 08:15:04,193 | ERROR   | wait | [ERRO][UNKNOWN] Stage=unexpected | Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl. | Hint: Sem dica.
+2025-11-07 08:15:05,081 | INFO    | wait | Screenshot salva: err_unknown_20251107_081504.png
+2025-11-07 08:15:05,114 | INFO    | wait | Encerrando sessão.
+2025-11-07 08:17:26,818 | INFO    | wait | Iniciando browser.
+2025-11-07 08:17:28,471 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-07 08:17:40,195 | INFO    | wait | Página estável.
+2025-11-07 08:17:40,518 | INFO    | wait | Abrindo transação: LI11N
+2025-11-07 08:17:40,568 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 08:17:42,486 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 08:17:43,902 | INFO    | wait | OK: Status livre
+2025-11-07 08:17:43,937 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-07 08:17:44,827 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (Tipo Deposito='H0A')...
+2025-11-07 08:17:45,584 | INFO    | wait | Registros DB (H0A): 14
+2025-11-07 08:17:45,603 | INFO    | wait | Lendo template: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-07 08:17:50,099 | INFO    | wait | Total registros preparados: 14
+2025-11-07 08:17:50,161 | INFO    | wait | Contagem (DB) carregada: 14 registros.
+2025-11-07 08:17:53,926 | INFO    | wait | Template referência carregado: 126 linhas.
+2025-11-07 08:17:53,968 | INFO    | wait | Iniciando composição de lançamentos com referência. Registros contagem=14
+2025-11-07 08:17:53,987 | INFO    | wait | [1/14] Sem referência p/ Material=1520250032 Bin=MKT-001. Lançando total direto.
+2025-11-07 08:17:54,025 | INFO    | wait | [2/14] Sem referência p/ Material=1510206030 Bin=MKT-002. Lançando total direto.
+2025-11-07 08:17:54,053 | INFO    | wait | [3/14] Sem referência p/ Material=1510283009 Bin=MKT-003. Lançando total direto.
+2025-11-07 08:17:54,089 | INFO    | wait | [4/14] Sem referência p/ Material=1520221021 Bin=MKT-004. Lançando total direto.
+2025-11-07 08:17:54,118 | INFO    | wait | [5/14] Sem referência p/ Material=R907190861 Bin=MKT-005. Lançando total direto.
+2025-11-07 08:17:54,144 | INFO    | wait | [6/14] Sem referência p/ Material=R909083352 Bin=MKT-006. Lançando total direto.
+2025-11-07 08:17:54,176 | INFO    | wait | [7/14] Sem referência p/ Material=1810210139 Bin=MKT-007. Lançando total direto.
+2025-11-07 08:17:54,204 | INFO    | wait | [8/14] Sem referência p/ Material=1520100110 Bin=MKT-008. Lançando total direto.
+2025-11-07 08:17:54,241 | INFO    | wait | [9/14] Sem referência p/ Material=1900210306 Bin=MKT-009. Lançando total direto.
+2025-11-07 08:17:54,272 | INFO    | wait | [10/14] Sem referência p/ Material=1810210237 Bin=MKT-010. Lançando total direto.
+2025-11-07 08:17:54,304 | INFO    | wait | [11/14] Sem referência p/ Material=R913037827 Bin=MKT-011. Lançando total direto.
+2025-11-07 08:17:54,334 | INFO    | wait | [12/14] Sem referência p/ Material=6000171947 Bin=MKT-BANCAD. Lançando total direto.
+2025-11-07 08:17:54,355 | INFO    | wait | [13/14] Sem referência p/ Material=6000171510 Bin=MKT-PRAT7. Lançando total direto.
+2025-11-07 08:17:54,387 | INFO    | wait | [14/14] Sem referência p/ Material=6000171334 Bin=PO-112. Lançando total direto.
+2025-11-07 08:17:54,419 | INFO    | wait | Total linhas para lançar: 14
+2025-11-07 08:17:55,901 | INFO    | wait | [STEP] Inventory record -> 'nan' (tentativa 1)
+2025-11-07 08:17:59,819 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 08:18:00,674 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 08:18:00,705 | INFO    | wait | [Registro 1/14] {'inventory_record': 'nan', 'material_number': '1520250032', 'storage_bin': 'MKT-001', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': '', 'counted_quantity': '0', 'quantity_alt': '0', 'ud': '', 'stock_total': ''}
+2025-11-07 08:18:05,776 | ERROR   | wait | [Registro 1/14] Erro inesperado: Locator.wait_for: Target page, context or browser has been closed
+Call log:
+  - waiting for get_by_role("textbox", name="Material Number") to be visible
+
+2025-11-07 08:18:07,155 | INFO    | wait | Encerrando sessão.
+2025-11-07 08:18:07,315 | ERROR   | wait | Erro ao fechar sessão: BrowserContext.close: Target page, context or browser has been closed
+2025-11-07 08:30:01,701 | INFO    | wait | Iniciando browser.
+2025-11-07 08:30:04,150 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-07 08:30:16,362 | INFO    | wait | Página estável.
+2025-11-07 08:30:16,646 | INFO    | wait | Abrindo transação: LI11N
+2025-11-07 08:30:16,668 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 08:30:18,416 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 08:30:19,708 | INFO    | wait | OK: Status livre
+2025-11-07 08:30:19,735 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-07 08:30:20,684 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (Tipo Deposito='H0A')...
+2025-11-07 08:30:21,718 | INFO    | wait | Registros DB (H0A): 14
+2025-11-07 08:30:21,752 | INFO    | wait | Lendo template: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-07 08:30:31,658 | INFO    | wait | DOC associados: 0/14
+2025-11-07 08:30:31,700 | INFO    | wait | Registros prontos para lançamento: 14
+2025-11-07 08:30:31,735 | INFO    | wait | Exemplo DB chave: [{'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-001', 'Material': '1520250032'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-002', 'Material': '1510206030'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-003', 'Material': '1510283009'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-004', 'Material': '1520221021'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-005', 'Material': 'R907190861'}]
+2025-11-07 08:30:31,774 | INFO    | wait | Exemplo Template chave (com DOC): [{'Centro': 'nan', 'Deposito': 'nan', 'PosicaoDeposito': '0000BR2203', 'Material': 'nan', 'DOC_CLEAN': '1063'}, {'Centro': 'nan', 'Deposito': 'nan', 'PosicaoDeposito': 'MKT-049', 'Material': 'nan', 'DOC_CLEAN': '1064'}, {'Centro': 'nan', 'Deposito': 'nan', 'PosicaoDeposito': 'MKT-090', 'Material': 'nan', 'DOC_CLEAN': '1064'}, {'Centro': 'nan', 'Deposito': 'nan', 'PosicaoDeposito': 'MKT-PRAT1', 'Material': 'nan', 'DOC_CLEAN': '1065'}, {'Centro': 'nan', 'Deposito': 'nan', 'PosicaoDeposito': 'MKT-PRAT2', 'Material': 'nan', 'DOC_CLEAN': '1065'}]
+2025-11-07 08:30:31,836 | INFO    | wait | Registros recebidos (DB): 14 | Com DOC: 14
+2025-11-07 08:30:33,167 | INFO    | wait | [STEP] Inventory record -> 'nan' (tentativa 1)
+2025-11-07 08:30:36,933 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 08:30:37,601 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 08:30:37,634 | INFO    | wait | [Registro 1/14] {'inventory_record': 'nan', 'material_number': '1520250032', 'storage_bin': 'MKT-001', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '900', 'quantity_alt': '900', 'ud': '', 'stock_total': ''}
+2025-11-07 08:30:42,074 | ERROR   | wait | [Registro 1/14] Erro inesperado: Locator.wait_for: Target page, context or browser has been closed
+Call log:
+  - waiting for get_by_role("textbox", name="Material Number") to be visible
+
+2025-11-07 08:30:43,405 | INFO    | wait | Estado antes do Cancel final: UNKNOWN
+2025-11-07 08:30:43,569 | ERROR   | wait | [ERRO][UNKNOWN] Stage=single_record_entries | Locator.count: Target page, context or browser has been closed | Hint: Sem dica.
+2025-11-07 08:30:43,972 | ERROR   | wait | Falha ao salvar screenshot: Page.screenshot: Target page, context or browser has been closed
+2025-11-07 08:30:44,005 | ERROR   | wait | [ERRO][UNKNOWN] Stage=unexpected | Locator.count: Target page, context or browser has been closed | Hint: Sem dica.
+2025-11-07 08:30:44,164 | ERROR   | wait | Falha ao salvar screenshot: Page.screenshot: Target page, context or browser has been closed
+2025-11-07 08:30:44,194 | INFO    | wait | Encerrando sessão.
+2025-11-07 08:34:23,274 | INFO    | wait | Iniciando browser.
+2025-11-07 08:34:24,841 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-07 08:34:36,725 | INFO    | wait | Página estável.
+2025-11-07 08:34:37,031 | INFO    | wait | Abrindo transação: LI11N
+2025-11-07 08:34:37,062 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 08:34:38,689 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 08:34:39,956 | INFO    | wait | OK: Status livre
+2025-11-07 08:34:39,987 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-07 08:34:40,878 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (Tipo Deposito='H0A')...
+2025-11-07 08:34:41,602 | INFO    | wait | Registros DB (H0A): 14
+2025-11-07 08:34:41,625 | INFO    | wait | Lendo template: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-07 08:34:45,536 | INFO    | wait | DOC associados: 14/14
+2025-11-07 08:34:45,575 | INFO    | wait | Registros prontos para lançamento: 14
+2025-11-07 08:34:45,609 | INFO    | wait | Exemplo DB chave: [{'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-001', 'Material': '1520250032'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-002', 'Material': '1510206030'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-003', 'Material': '1510283009'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-004', 'Material': '1520221021'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-005', 'Material': 'R907190861'}]
+2025-11-07 08:34:45,643 | INFO    | wait | Exemplo Template chave (com DOC): [{'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'KIT_DINV', 'Material': 'R979368641', 'DOC_CLEAN': '1063'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-001', 'Material': '1520250032', 'DOC_CLEAN': '1063'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-002', 'Material': '1510206030', 'DOC_CLEAN': '1063'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-003', 'Material': '1510283009', 'DOC_CLEAN': '1063'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-004', 'Material': '1520221021', 'DOC_CLEAN': '1063'}]
+2025-11-07 08:34:45,712 | INFO    | wait | Registros recebidos (DB): 14 | Com DOC: 14
+2025-11-07 08:34:46,951 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 08:34:50,723 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 08:34:51,375 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 08:34:51,410 | INFO    | wait | [Registro 1/14] {'inventory_record': '1063', 'material_number': '1520250032', 'storage_bin': 'MKT-001', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '900', 'quantity_alt': '900', 'ud': '', 'stock_total': ''}
+2025-11-07 08:34:58,096 | ERROR   | wait | [Registro 1/14] Erro inesperado: Locator.wait_for: Target page, context or browser has been closed
+Call log:
+  - waiting for get_by_role("textbox", name="Material Number") to be visible
+
+2025-11-07 08:34:59,380 | INFO    | wait | Estado antes do Cancel final: UNKNOWN
+2025-11-07 08:34:59,529 | ERROR   | wait | [ERRO][UNKNOWN] Stage=single_record_entries | Locator.count: Target page, context or browser has been closed | Hint: Sem dica.
+2025-11-07 08:34:59,865 | ERROR   | wait | Falha ao salvar screenshot: Page.screenshot: Target page, context or browser has been closed
+2025-11-07 08:34:59,893 | ERROR   | wait | [ERRO][UNKNOWN] Stage=unexpected | Locator.count: Target page, context or browser has been closed | Hint: Sem dica.
+2025-11-07 08:35:00,050 | ERROR   | wait | Falha ao salvar screenshot: Page.screenshot: Target page, context or browser has been closed
+2025-11-07 08:35:00,075 | INFO    | wait | Encerrando sessão.
+2025-11-07 08:37:18,413 | INFO    | wait | Iniciando browser.
+2025-11-07 08:37:19,834 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-07 08:37:31,670 | INFO    | wait | Página estável.
+2025-11-07 08:37:32,003 | INFO    | wait | Abrindo transação: LI11N
+2025-11-07 08:37:32,033 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 08:37:33,633 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 08:37:34,919 | INFO    | wait | OK: Status livre
+2025-11-07 08:37:34,953 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-07 08:37:35,837 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (Tipo Deposito='H0A')...
+2025-11-07 08:37:36,561 | INFO    | wait | Registros DB (H0A): 14
+2025-11-07 08:37:36,590 | INFO    | wait | Lendo template: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-07 08:37:40,121 | INFO    | wait | DOC associados: 14/14
+2025-11-07 08:37:40,155 | INFO    | wait | Registros prontos para lançamento: 14
+2025-11-07 08:37:40,203 | INFO    | wait | Exemplo DB chave: [{'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-001', 'Material': '1520250032'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-002', 'Material': '1510206030'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-003', 'Material': '1510283009'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-004', 'Material': '1520221021'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-005', 'Material': 'R907190861'}]
+2025-11-07 08:37:40,237 | INFO    | wait | Exemplo Template chave (com DOC): [{'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'KIT_DINV', 'Material': 'R979368641', 'DOC_CLEAN': '1063'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-001', 'Material': '1520250032', 'DOC_CLEAN': '1063'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-002', 'Material': '1510206030', 'DOC_CLEAN': '1063'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-003', 'Material': '1510283009', 'DOC_CLEAN': '1063'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-004', 'Material': '1520221021', 'DOC_CLEAN': '1063'}]
+2025-11-07 08:37:40,288 | INFO    | wait | Registros recebidos (DB): 14 | Com DOC: 14
+2025-11-07 08:37:41,621 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 08:37:45,986 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 08:37:46,654 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 08:37:46,689 | INFO    | wait | [Registro 1/14] {'inventory_record': '1063', 'material_number': '1520250032', 'storage_bin': 'MKT-001', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '900', 'quantity_alt': '900', 'ud': '', 'stock_total': ''}
+2025-11-07 08:37:50,039 | ERROR   | wait | [Registro 1/14] Erro inesperado: Locator.wait_for: Target page, context or browser has been closed
+Call log:
+  - waiting for get_by_role("textbox", name="Material Number") to be visible
+
+2025-11-07 08:37:51,319 | INFO    | wait | Estado antes do Cancel final: UNKNOWN
+2025-11-07 08:37:51,474 | ERROR   | wait | [ERRO][UNKNOWN] Stage=single_record_entries | Locator.count: Target page, context or browser has been closed | Hint: Sem dica.
+2025-11-07 08:37:51,788 | ERROR   | wait | Falha ao salvar screenshot: Page.screenshot: Target page, context or browser has been closed
+2025-11-07 08:37:51,804 | ERROR   | wait | [ERRO][UNKNOWN] Stage=unexpected | Locator.count: Target page, context or browser has been closed | Hint: Sem dica.
+2025-11-07 08:37:51,966 | ERROR   | wait | Falha ao salvar screenshot: Page.screenshot: Target page, context or browser has been closed
+2025-11-07 08:37:52,000 | INFO    | wait | Encerrando sessão.
+2025-11-07 08:43:24,902 | INFO    | wait | Iniciando browser.
+2025-11-07 08:43:26,394 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-07 08:43:38,129 | INFO    | wait | Página estável.
+2025-11-07 08:43:38,417 | INFO    | wait | Abrindo transação: LI11N
+2025-11-07 08:43:38,447 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 08:43:40,060 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 08:43:41,331 | INFO    | wait | OK: Status livre
+2025-11-07 08:43:41,348 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-07 08:43:42,247 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (Tipo Deposito='H0A')...
+2025-11-07 08:43:43,001 | INFO    | wait | Registros DB (H0A): 14
+2025-11-07 08:43:43,038 | INFO    | wait | Lendo template: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-07 08:43:46,609 | INFO    | wait | DOC associados: 14/14
+2025-11-07 08:43:46,651 | INFO    | wait | Registros prontos para lançamento: 14
+2025-11-07 08:43:46,683 | INFO    | wait | Exemplo DB chave: [{'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-001', 'Material': '1520250032'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-002', 'Material': '1510206030'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-003', 'Material': '1510283009'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-004', 'Material': '1520221021'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-005', 'Material': 'R907190861'}]
+2025-11-07 08:43:46,721 | INFO    | wait | Exemplo Template chave (com DOC): [{'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'KIT_DINV', 'Material': 'R979368641', 'DOC_CLEAN': '1063'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-001', 'Material': '1520250032', 'DOC_CLEAN': '1063'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-002', 'Material': '1510206030', 'DOC_CLEAN': '1063'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-003', 'Material': '1510283009', 'DOC_CLEAN': '1063'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-004', 'Material': '1520221021', 'DOC_CLEAN': '1063'}]
+2025-11-07 08:43:46,783 | INFO    | wait | Registros recebidos (DB): 14 | Com DOC: 14
+2025-11-07 08:43:47,764 | INFO    | wait | Preencher 'Warehouse Number / Warehouse' com 'BR2'
+2025-11-07 08:43:48,542 | INFO    | wait | [STEP] Preencher 'Warehouse Number / Warehouse' com 'BR2'
+2025-11-07 08:43:49,374 | INFO    | wait | Warehouse definido: BR2
+2025-11-07 08:43:50,129 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 08:43:54,546 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 08:43:55,513 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 08:43:55,550 | INFO    | wait | [Registro 1/14] {'inventory_record': '1063', 'material_number': '1520250032', 'storage_bin': 'MKT-001', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '900', 'quantity_alt': '900', 'ud': '', 'stock_total': ''}
+2025-11-07 08:44:04,412 | INFO    | wait | Click Cancel
+2025-11-07 08:44:05,680 | INFO    | wait | Click Cancel
+2025-11-07 08:44:06,794 | INFO    | wait | Click Yes (confirmação)
+2025-11-07 08:44:07,885 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 08:44:07,918 | INFO    | wait | [Registro 1/14] concluído.
+2025-11-07 08:44:10,474 | INFO    | wait | Estado antes do Cancel final: UNKNOWN
+2025-11-07 08:44:10,637 | ERROR   | wait | [Registro 2/14] Erro inesperado: Locator.count: Target page, context or browser has been closed
+2025-11-07 08:44:11,911 | INFO    | wait | Estado antes do Cancel final: UNKNOWN
+2025-11-07 08:44:12,063 | ERROR   | wait | [ERRO][UNKNOWN] Stage=single_record_entries | Locator.count: Target page, context or browser has been closed | Hint: Sem dica.
+2025-11-07 08:44:12,373 | ERROR   | wait | Falha ao salvar screenshot: Page.screenshot: Target page, context or browser has been closed
+2025-11-07 08:44:12,397 | ERROR   | wait | [ERRO][UNKNOWN] Stage=unexpected | Locator.count: Target page, context or browser has been closed | Hint: Sem dica.
+2025-11-07 08:44:12,567 | INFO    | wait | Encerrando sessão.
+2025-11-07 08:44:12,726 | ERROR   | wait | Erro ao fechar sessão: BrowserContext.close: Target page, context or browser has been closed
+2025-11-07 09:23:19,792 | INFO    | wait | Iniciando browser.
+2025-11-07 09:23:22,105 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-07 09:23:36,008 | INFO    | wait | Página estável.
+2025-11-07 09:23:36,314 | INFO    | wait | Abrindo transação: LI11N
+2025-11-07 09:23:36,357 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 09:23:38,105 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 09:23:39,389 | INFO    | wait | OK: Status livre
+2025-11-07 09:23:39,420 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-07 09:23:40,311 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (Tipo Deposito='H0A')...
+2025-11-07 09:23:41,291 | INFO    | wait | Registros DB (H0A): 14
+2025-11-07 09:23:41,325 | INFO    | wait | Lendo template: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-07 09:23:45,645 | INFO    | wait | DOC associados: 0/14
+2025-11-07 09:23:45,691 | INFO    | wait | Registros prontos para lançamento: 14
+2025-11-07 09:23:45,725 | INFO    | wait | Exemplo DB chave: [{'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-001', 'Material': '1520250032'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-002', 'Material': '1510206030'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-003', 'Material': '1510283009'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-004', 'Material': '1520221021'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-005', 'Material': 'R907190861'}]
+2025-11-07 09:23:45,759 | INFO    | wait | Exemplo Template chave (com DOC): [{'Centro': 'nan', 'Deposito': 'nan', 'PosicaoDeposito': '0000BR2203', 'Material': 'nan', 'DOC_CLEAN': '1063'}, {'Centro': 'nan', 'Deposito': 'nan', 'PosicaoDeposito': 'MKT-049', 'Material': 'nan', 'DOC_CLEAN': '1064'}, {'Centro': 'nan', 'Deposito': 'nan', 'PosicaoDeposito': 'MKT-090', 'Material': 'nan', 'DOC_CLEAN': '1064'}, {'Centro': 'nan', 'Deposito': 'nan', 'PosicaoDeposito': 'MKT-PRAT1', 'Material': 'nan', 'DOC_CLEAN': '1065'}, {'Centro': 'nan', 'Deposito': 'nan', 'PosicaoDeposito': 'MKT-PRAT2', 'Material': 'nan', 'DOC_CLEAN': '1065'}]
+2025-11-07 09:23:45,809 | INFO    | wait | Registros recebidos (DB): 14 | Válidos p/ lançamento: 0 | Pulados (campos vazios/nan): 14
+2025-11-07 09:23:45,843 | WARNING | wait | Nenhum registro válido para lançar (campos obrigatórios incompletos).
+2025-11-07 09:23:45,888 | INFO    | wait | Fluxo concluído com sucesso.
+2025-11-07 09:23:45,908 | INFO    | wait | Pausa final 12.0s.
+2025-11-07 09:23:57,950 | INFO    | wait | Encerrando sessão.
+2025-11-07 09:24:42,924 | INFO    | wait | Iniciando browser.
+2025-11-07 09:24:44,916 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-07 09:25:02,055 | INFO    | wait | Página estável.
+2025-11-07 09:25:02,306 | INFO    | wait | Abrindo transação: LI11N
+2025-11-07 09:25:02,337 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 09:25:03,987 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 09:25:05,317 | INFO    | wait | OK: Status livre
+2025-11-07 09:25:05,348 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-07 09:25:06,289 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (Tipo Deposito='H0A')...
+2025-11-07 09:25:07,174 | INFO    | wait | Registros DB (H0A): 14
+2025-11-07 09:25:07,220 | INFO    | wait | Lendo template: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-07 09:25:11,614 | INFO    | wait | DOC associados: 14/14
+2025-11-07 09:25:11,650 | INFO    | wait | Registros prontos para lançamento: 14
+2025-11-07 09:25:11,679 | INFO    | wait | Exemplo DB chave: [{'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-001', 'Material': '1520250032'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-002', 'Material': '1510206030'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-003', 'Material': '1510283009'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-004', 'Material': '1520221021'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-005', 'Material': 'R907190861'}]
+2025-11-07 09:25:11,714 | INFO    | wait | Exemplo Template chave (com DOC): [{'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'KIT_DINV', 'Material': 'R979368641', 'DOC_CLEAN': '1063'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-001', 'Material': '1520250032', 'DOC_CLEAN': '1063'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-002', 'Material': '1510206030', 'DOC_CLEAN': '1063'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-003', 'Material': '1510283009', 'DOC_CLEAN': '1063'}, {'Centro': 'BR20', 'Deposito': '2050', 'PosicaoDeposito': 'MKT-004', 'Material': '1520221021', 'DOC_CLEAN': '1063'}]
+2025-11-07 09:25:11,774 | INFO    | wait | Registros recebidos (DB): 14 | Válidos p/ lançamento: 14 | Pulados (campos vazios/nan): 0
+2025-11-07 09:25:11,805 | ERROR   | wait | [ERRO][UNKNOWN] Stage=single_record_entries | name '_is_invalid_field' is not defined | Hint: Sem dica.
+2025-11-07 09:25:13,054 | INFO    | wait | Screenshot salva: err_unknown_20251107_092511.png
+2025-11-07 09:25:13,083 | ERROR   | wait | [ERRO][UNKNOWN] Stage=unexpected | name '_is_invalid_field' is not defined | Hint: Sem dica.
+2025-11-07 09:25:13,206 | INFO    | wait | Encerrando sessão.
+2025-11-07 09:25:13,375 | ERROR   | wait | Erro ao fechar sessão: BrowserContext.close: Target page, context or browser has been closed
+2025-11-07 09:33:20,009 | INFO    | wait | Iniciando browser.
+2025-11-07 09:33:21,736 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-07 09:33:33,454 | INFO    | wait | Página estável.
+2025-11-07 09:33:33,699 | INFO    | wait | Abrindo transação: LI11N
+2025-11-07 09:33:33,734 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 09:33:35,335 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 09:33:36,615 | INFO    | wait | OK: Status livre
+2025-11-07 09:33:36,654 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-07 09:33:37,540 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (Tipo Deposito='H0A')...
+2025-11-07 09:33:38,262 | INFO    | wait | Registros banco (H0A): 14
+2025-11-07 09:33:38,296 | INFO    | wait | Lendo template estoque: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-07 09:33:42,086 | INFO    | wait | Índice DOC: full=116 mat_bin=0 bin=0
+2025-11-07 09:33:42,133 | INFO    | wait | Associados DOC: full=14 mat_bin=0 bin=0 | Final=14
+2025-11-07 09:33:42,156 | INFO    | wait | Exemplo registros prontos: [{'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-001', 'material': '1520250032', 'quantity': 900.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-002', 'material': '1510206030', 'quantity': 1000.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-003', 'material': '1510283009', 'quantity': 2000.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-004', 'material': '1520221021', 'quantity': 5.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-005', 'material': 'R907190861', 'quantity': 8520.0, 'doc': '1063', 'deposit_type': 'H0A'}]
+2025-11-07 09:33:42,224 | INFO    | wait | Registros recebidos (DB): 14 | Válidos p/ lançamento: 14 | Pulados (campos vazios/nan): 0
+2025-11-07 09:33:43,250 | INFO    | wait | Preencher 'Warehouse Number / Warehouse' com 'BR2'
+2025-11-07 09:33:44,021 | INFO    | wait | [STEP] Preencher 'Warehouse Number / Warehouse' com 'BR2'
+2025-11-07 09:33:44,852 | INFO    | wait | Warehouse definido: BR2
+2025-11-07 09:33:45,604 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 09:33:50,003 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:33:50,669 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:33:50,690 | INFO    | wait | [Registro 1/14] {'inventory_record': '1063', 'material_number': '1520250032', 'storage_bin': 'MKT-001', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '900', 'quantity_alt': '900', 'ud': '', 'stock_total': ''}
+2025-11-07 09:33:59,441 | INFO    | wait | Click Cancel
+2025-11-07 09:34:00,706 | INFO    | wait | Click Cancel
+2025-11-07 09:34:04,555 | INFO    | wait | Click Yes (confirmação)
+2025-11-07 09:34:05,622 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:34:05,656 | INFO    | wait | [Registro 1/14] concluído.
+2025-11-07 09:34:07,057 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 09:34:11,420 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:34:12,072 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:34:12,107 | INFO    | wait | [Registro 2/14] {'inventory_record': '1063', 'material_number': '1510206030', 'storage_bin': 'MKT-002', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '1000', 'quantity_alt': '1000', 'ud': '', 'stock_total': ''}
+2025-11-07 09:34:20,802 | INFO    | wait | Click Cancel
+2025-11-07 09:34:22,073 | INFO    | wait | Click Cancel
+2025-11-07 09:34:22,804 | INFO    | wait | Click Yes (confirmação)
+2025-11-07 09:34:23,890 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:34:23,920 | INFO    | wait | [Registro 2/14] concluído.
+2025-11-07 09:34:26,746 | INFO    | wait | Encerrando sessão.
+2025-11-07 09:34:26,902 | ERROR   | wait | Erro ao fechar sessão: BrowserContext.close: Target page, context or browser has been closed
+2025-11-07 09:35:56,165 | INFO    | wait | Iniciando browser.
+2025-11-07 09:35:57,540 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-07 09:36:09,647 | INFO    | wait | Página estável.
+2025-11-07 09:36:09,942 | INFO    | wait | Abrindo transação: LI11N
+2025-11-07 09:36:09,972 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 09:36:11,519 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 09:36:12,811 | INFO    | wait | OK: Status livre
+2025-11-07 09:36:12,846 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-07 09:36:13,738 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (Tipo Deposito='H0A')...
+2025-11-07 09:36:14,546 | INFO    | wait | Registros banco (H0A): 14
+2025-11-07 09:36:14,576 | INFO    | wait | Lendo template estoque: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-07 09:36:18,136 | INFO    | wait | Índice DOC: full=116 mat_bin=0 bin=0
+2025-11-07 09:36:18,172 | INFO    | wait | Associados DOC: full=14 mat_bin=0 bin=0 | Final=14
+2025-11-07 09:36:18,204 | INFO    | wait | Exemplo registros prontos: [{'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-001', 'material': '1520250032', 'quantity': 900.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-002', 'material': '1510206030', 'quantity': 1000.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-003', 'material': '1510283009', 'quantity': 2000.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-004', 'material': '1520221021', 'quantity': 5.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-005', 'material': 'R907190861', 'quantity': 8520.0, 'doc': '1063', 'deposit_type': 'H0A'}]
+2025-11-07 09:36:18,281 | INFO    | wait | Registros recebidos (DB): 14 | Válidos p/ lançamento: 14 | Pulados (campos vazios/nan): 0
+2025-11-07 09:36:19,250 | INFO    | wait | Preencher 'Warehouse Number / Warehouse' com 'BR2'
+2025-11-07 09:36:20,004 | INFO    | wait | [STEP] Preencher 'Warehouse Number / Warehouse' com 'BR2'
+2025-11-07 09:36:20,836 | INFO    | wait | Warehouse definido: BR2
+2025-11-07 09:36:21,603 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 09:36:25,986 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:36:26,647 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:36:26,689 | INFO    | wait | [Registro 1/14] {'inventory_record': '1063', 'material_number': '1520250032', 'storage_bin': 'MKT-001', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '900', 'quantity_alt': '900', 'ud': '', 'stock_total': ''}
+2025-11-07 09:36:35,504 | INFO    | wait | Click Cancel
+2025-11-07 09:36:36,769 | INFO    | wait | Click Cancel
+2025-11-07 09:36:37,922 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:36:37,956 | INFO    | wait | [Registro 1/14] concluído.
+2025-11-07 09:37:16,969 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 2)
+2025-11-07 09:37:21,353 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:37:22,019 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:37:22,057 | INFO    | wait | [Registro 2/14] {'inventory_record': '1063', 'material_number': '1510206030', 'storage_bin': 'MKT-002', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '1000', 'quantity_alt': '1000', 'ud': '', 'stock_total': ''}
+2025-11-07 09:37:30,786 | INFO    | wait | Click Cancel
+2025-11-07 09:37:32,106 | INFO    | wait | Click Cancel
+2025-11-07 09:37:33,258 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:37:33,288 | INFO    | wait | [Registro 2/14] concluído.
+2025-11-07 09:37:42,280 | INFO    | wait | Encerrando sessão.
+2025-11-07 09:37:42,450 | ERROR   | wait | Erro ao fechar sessão: BrowserContext.close: Target page, context or browser has been closed
+2025-11-07 09:44:34,971 | INFO    | wait | Iniciando browser.
+2025-11-07 09:44:37,162 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-07 09:44:50,720 | INFO    | wait | Página estável.
+2025-11-07 09:44:50,993 | INFO    | wait | Abrindo transação: LI11N
+2025-11-07 09:44:51,023 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 09:44:52,658 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 09:44:54,020 | INFO    | wait | OK: Status livre
+2025-11-07 09:44:54,052 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-07 09:44:54,944 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (Tipo Deposito='H0A')...
+2025-11-07 09:44:55,879 | INFO    | wait | Registros banco (H0A): 14
+2025-11-07 09:44:55,913 | INFO    | wait | Lendo template estoque: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-07 09:45:00,460 | INFO    | wait | Índice DOC: full=116 mat_bin=0 bin=0
+2025-11-07 09:45:00,495 | INFO    | wait | Associados DOC: full=14 mat_bin=0 bin=0 | Final=14
+2025-11-07 09:45:00,529 | INFO    | wait | Exemplo registros prontos: [{'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-001', 'material': '1520250032', 'quantity': 900.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-002', 'material': '1510206030', 'quantity': 1000.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-003', 'material': '1510283009', 'quantity': 2000.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-004', 'material': '1520221021', 'quantity': 5.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-005', 'material': 'R907190861', 'quantity': 8520.0, 'doc': '1063', 'deposit_type': 'H0A'}]
+2025-11-07 09:45:00,595 | INFO    | wait | Registros recebidos (DB): 14 | Válidos p/ lançamento: 14 | Pulados (campos vazios/nan): 0
+2025-11-07 09:45:01,958 | INFO    | wait | Warehouse definido: BR2
+2025-11-07 09:45:02,743 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 09:45:04,659 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:45:05,326 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:45:05,361 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:45:05,394 | INFO    | wait | [Registro 1/14] {'inventory_record': '1063', 'material_number': '1520250032', 'storage_bin': 'MKT-001', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '900', 'quantity_alt': '900', 'ud': '', 'stock_total': ''}
+2025-11-07 09:45:11,575 | INFO    | wait | Click Cancel
+2025-11-07 09:45:12,625 | INFO    | wait | Click Cancel
+2025-11-07 09:45:13,875 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 09:45:15,110 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:45:15,144 | INFO    | wait | [Registro 1/14] concluído.
+2025-11-07 09:45:16,309 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 09:45:18,107 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:45:18,768 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:45:18,794 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:45:18,828 | INFO    | wait | [Registro 2/14] {'inventory_record': '1063', 'material_number': '1510206030', 'storage_bin': 'MKT-002', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '1000', 'quantity_alt': '1000', 'ud': '', 'stock_total': ''}
+2025-11-07 09:45:24,957 | INFO    | wait | Click Cancel
+2025-11-07 09:45:26,009 | INFO    | wait | Click Cancel
+2025-11-07 09:45:27,057 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 09:45:28,250 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:45:28,278 | INFO    | wait | [Registro 2/14] concluído.
+2025-11-07 09:45:29,757 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 09:45:31,574 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:45:32,251 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:45:32,294 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:45:32,329 | INFO    | wait | [Registro 3/14] {'inventory_record': '1063', 'material_number': '1510283009', 'storage_bin': 'MKT-003', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '2000', 'quantity_alt': '2000', 'ud': '', 'stock_total': ''}
+2025-11-07 09:45:38,391 | INFO    | wait | Click Cancel
+2025-11-07 09:45:39,787 | INFO    | wait | Click Cancel
+2025-11-07 09:45:41,358 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 09:45:42,771 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:45:42,814 | INFO    | wait | [Registro 3/14] concluído.
+2025-11-07 09:45:43,924 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 09:45:45,691 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:45:46,349 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:45:46,377 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:45:46,410 | INFO    | wait | [Registro 4/14] {'inventory_record': '1063', 'material_number': '1520221021', 'storage_bin': 'MKT-004', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '5', 'quantity_alt': '5', 'ud': '', 'stock_total': ''}
+2025-11-07 09:45:52,489 | INFO    | wait | Click Cancel
+2025-11-07 09:45:53,540 | INFO    | wait | Click Cancel
+2025-11-07 09:45:54,575 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 09:45:55,804 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:45:55,826 | INFO    | wait | [Registro 4/14] concluído.
+2025-11-07 09:45:57,074 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 09:45:58,875 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:45:59,536 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:45:59,560 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:45:59,593 | INFO    | wait | [Registro 5/14] {'inventory_record': '1063', 'material_number': 'R907190861', 'storage_bin': 'MKT-005', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '8520', 'quantity_alt': '8520', 'ud': '', 'stock_total': ''}
+2025-11-07 09:46:05,908 | INFO    | wait | Click Cancel
+2025-11-07 09:46:06,957 | INFO    | wait | Click Cancel
+2025-11-07 09:46:07,990 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 09:46:09,186 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:46:09,225 | INFO    | wait | [Registro 5/14] concluído.
+2025-11-07 09:46:10,306 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 09:46:12,059 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:46:12,765 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:46:12,795 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:46:12,829 | INFO    | wait | [Registro 6/14] {'inventory_record': '1063', 'material_number': 'R909083352', 'storage_bin': 'MKT-006', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '10832', 'quantity_alt': '10832', 'ud': '', 'stock_total': ''}
+2025-11-07 09:46:19,075 | INFO    | wait | Click Cancel
+2025-11-07 09:46:20,159 | INFO    | wait | Click Cancel
+2025-11-07 09:46:21,225 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 09:46:22,427 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:46:22,460 | INFO    | wait | [Registro 6/14] concluído.
+2025-11-07 09:46:23,608 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 09:46:25,357 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:46:26,091 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:46:26,126 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:46:26,160 | INFO    | wait | [Registro 7/14] {'inventory_record': '1063', 'material_number': '1810210139', 'storage_bin': 'MKT-007', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '80', 'quantity_alt': '80', 'ud': '', 'stock_total': ''}
+2025-11-07 09:46:32,339 | INFO    | wait | Click Cancel
+2025-11-07 09:46:33,475 | INFO    | wait | Click Cancel
+2025-11-07 09:46:34,526 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 09:46:35,758 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:46:35,778 | INFO    | wait | [Registro 7/14] concluído.
+2025-11-07 09:46:36,943 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 09:46:38,726 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:46:39,401 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:46:39,427 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:46:39,480 | INFO    | wait | [Registro 8/14] {'inventory_record': '1063', 'material_number': '1520100110', 'storage_bin': 'MKT-008', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '600', 'quantity_alt': '600', 'ud': '', 'stock_total': ''}
+2025-11-07 09:46:45,625 | INFO    | wait | Click Cancel
+2025-11-07 09:46:46,692 | INFO    | wait | Click Cancel
+2025-11-07 09:46:47,743 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 09:46:48,941 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:46:48,972 | INFO    | wait | [Registro 8/14] concluído.
+2025-11-07 09:46:50,074 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 09:46:51,826 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:46:52,487 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:46:52,510 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:46:52,544 | INFO    | wait | [Registro 9/14] {'inventory_record': '1063', 'material_number': '1900210306', 'storage_bin': 'MKT-009', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '3820', 'quantity_alt': '3820', 'ud': '', 'stock_total': ''}
+2025-11-07 09:46:58,759 | INFO    | wait | Click Cancel
+2025-11-07 09:46:59,825 | INFO    | wait | Click Cancel
+2025-11-07 09:47:00,875 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 09:47:02,101 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:47:02,128 | INFO    | wait | [Registro 9/14] concluído.
+2025-11-07 09:47:03,276 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 09:47:05,042 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:47:05,700 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:47:05,728 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:47:05,764 | INFO    | wait | [Registro 10/14] {'inventory_record': '1063', 'material_number': '1810210237', 'storage_bin': 'MKT-010', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '500', 'quantity_alt': '500', 'ud': '', 'stock_total': ''}
+2025-11-07 09:47:11,808 | INFO    | wait | Click Cancel
+2025-11-07 09:47:12,858 | INFO    | wait | Click Cancel
+2025-11-07 09:47:13,926 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 09:47:15,164 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:47:15,211 | INFO    | wait | [Registro 10/14] concluído.
+2025-11-07 09:47:16,393 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 09:47:18,158 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:47:18,818 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:47:18,861 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:47:18,898 | INFO    | wait | [Registro 11/14] {'inventory_record': '1063', 'material_number': 'R913037827', 'storage_bin': 'MKT-011', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '109', 'quantity_alt': '109', 'ud': '', 'stock_total': ''}
+2025-11-07 09:47:25,093 | INFO    | wait | Click Cancel
+2025-11-07 09:47:26,160 | INFO    | wait | Click Cancel
+2025-11-07 09:47:27,224 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 09:47:28,437 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:47:28,461 | INFO    | wait | [Registro 11/14] concluído.
+2025-11-07 09:47:29,590 | INFO    | wait | [STEP] Inventory record -> '1065' (tentativa 1)
+2025-11-07 09:47:31,341 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:47:32,001 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:47:32,028 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:47:32,063 | INFO    | wait | [Registro 12/14] {'inventory_record': '1065', 'material_number': '6000171947', 'storage_bin': 'MKT-BANCAD', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '1980', 'quantity_alt': '1980', 'ud': '', 'stock_total': ''}
+2025-11-07 09:47:38,157 | INFO    | wait | Click Cancel
+2025-11-07 09:47:39,210 | INFO    | wait | Click Cancel
+2025-11-07 09:47:40,259 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 09:47:41,444 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:47:41,477 | INFO    | wait | [Registro 12/14] concluído.
+2025-11-07 09:47:42,576 | INFO    | wait | [STEP] Inventory record -> '1065' (tentativa 1)
+2025-11-07 09:47:44,327 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:47:45,018 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:47:45,051 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:47:45,081 | INFO    | wait | [Registro 13/14] {'inventory_record': '1065', 'material_number': '6000171510', 'storage_bin': 'MKT-PRAT7', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '12832', 'quantity_alt': '12832', 'ud': '', 'stock_total': ''}
+2025-11-07 09:47:51,275 | INFO    | wait | Click Cancel
+2025-11-07 09:47:52,358 | INFO    | wait | Click Cancel
+2025-11-07 09:47:53,393 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 09:47:54,589 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:47:54,619 | INFO    | wait | [Registro 13/14] concluído.
+2025-11-07 09:47:55,776 | INFO    | wait | [STEP] Inventory record -> '1065' (tentativa 1)
+2025-11-07 09:47:57,510 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 09:47:58,172 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:47:58,195 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 09:47:58,228 | INFO    | wait | [Registro 14/14] {'inventory_record': '1065', 'material_number': '6000171334', 'storage_bin': 'PO-112', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '2000', 'quantity_alt': '2000', 'ud': '', 'stock_total': ''}
+2025-11-07 09:48:04,443 | INFO    | wait | Click Cancel
+2025-11-07 09:48:05,542 | INFO    | wait | Click Cancel
+2025-11-07 09:48:06,592 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 09:48:07,804 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 09:48:07,845 | INFO    | wait | [Registro 14/14] concluído.
+2025-11-07 09:48:07,863 | INFO    | wait | Lançamentos (DB) concluídos.
+2025-11-07 09:48:07,900 | INFO    | wait | Fluxo concluído com sucesso.
+2025-11-07 09:48:07,931 | INFO    | wait | Pausa final 12.0s.
+2025-11-07 09:48:19,972 | INFO    | wait | Encerrando sessão.
+2025-11-07 10:12:23,981 | INFO    | wait | Iniciando browser.
+2025-11-07 10:12:27,066 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-07 10:12:39,327 | INFO    | wait | Página estável.
+2025-11-07 10:12:39,631 | INFO    | wait | Abrindo transação: LI11N
+2025-11-07 10:12:39,668 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 10:12:41,446 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 10:12:42,764 | INFO    | wait | OK: Status livre
+2025-11-07 10:12:42,790 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-07 10:12:43,690 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (Tipo Deposito='H0A')...
+2025-11-07 10:12:44,619 | INFO    | wait | Registros banco (H0A): 14
+2025-11-07 10:12:44,650 | INFO    | wait | Lendo template estoque: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-07 10:12:49,371 | INFO    | wait | Índice DOC: full=116 mat_bin=0 bin=0
+2025-11-07 10:12:49,407 | INFO    | wait | Associados DOC: full=14 mat_bin=0 bin=0 | Final=14
+2025-11-07 10:12:49,431 | INFO    | wait | Exemplo registros prontos: [{'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-001', 'material': '1520250032', 'quantity': 900.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-002', 'material': '1510206030', 'quantity': 1000.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-003', 'material': '1510283009', 'quantity': 2000.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-004', 'material': '1520221021', 'quantity': 5.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-005', 'material': 'R907190861', 'quantity': 8520.0, 'doc': '1063', 'deposit_type': 'H0A'}]
+2025-11-07 10:12:49,504 | INFO    | wait | Registros recebidos (DB): 14 | Válidos p/ lançamento: 14 | Pulados (campos vazios/nan): 0
+2025-11-07 10:12:50,912 | INFO    | wait | Warehouse definido: BR2
+2025-11-07 10:12:51,666 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 10:12:54,430 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 10:12:55,729 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:12:55,748 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:12:55,791 | INFO    | wait | [Registro 1/14] {'inventory_record': '1063', 'material_number': '1520250032', 'storage_bin': 'MKT-001', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '900', 'quantity_alt': '900', 'ud': '', 'stock_total': ''}
+2025-11-07 10:13:01,997 | INFO    | wait | Click Save
+2025-11-07 10:13:03,495 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 10:13:04,703 | INFO    | wait | OK: Tela INVENTORY disponível (após Save)
+2025-11-07 10:13:04,732 | INFO    | wait | [Registro 1/14] concluído.
+2025-11-07 10:13:05,944 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 10:13:07,741 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 10:13:08,450 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:13:08,491 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:13:08,522 | INFO    | wait | [Registro 2/14] {'inventory_record': '1063', 'material_number': '1510206030', 'storage_bin': 'MKT-002', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '1000', 'quantity_alt': '1000', 'ud': '', 'stock_total': ''}
+2025-11-07 10:13:14,763 | INFO    | wait | Click Save
+2025-11-07 10:13:19,910 | INFO    | wait | OK: Tela INVENTORY disponível (após Save)
+2025-11-07 10:13:19,940 | INFO    | wait | [Registro 2/14] concluído.
+2025-11-07 10:13:29,151 | ERROR   | wait | [Registro 3/14] Falha elemento: Não chegou na tela intermediária para inventário '1063'.
+2025-11-07 10:13:31,464 | ERROR   | wait | [Registro 4/14] Falha elemento: Não chegou na tela intermediária para inventário '1063'.
+2025-11-07 10:13:34,555 | ERROR   | wait | [Registro 5/14] Falha elemento: Não chegou na tela intermediária para inventário '1063'.
+2025-11-07 10:13:36,202 | INFO    | wait | Encerrando sessão.
+2025-11-07 10:13:36,429 | ERROR   | wait | Erro ao fechar sessão: BrowserContext.close: Target page, context or browser has been closed
+2025-11-07 10:37:32,244 | INFO    | wait | Iniciando browser.
+2025-11-07 10:37:34,044 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-07 10:37:45,834 | INFO    | wait | Página estável.
+2025-11-07 10:37:46,074 | INFO    | wait | Abrindo transação: LI11N
+2025-11-07 10:37:46,104 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 10:37:49,724 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-07 10:37:50,843 | INFO    | wait | OK: Status livre
+2025-11-07 10:37:50,873 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-07 10:37:51,735 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (Tipo Deposito='H0A')...
+2025-11-07 10:37:52,701 | INFO    | wait | Registros banco (H0A): 14
+2025-11-07 10:37:52,720 | INFO    | wait | Lendo template estoque: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-07 10:37:56,199 | INFO    | wait | Índice DOC: full=116 mat_bin=0 bin=0
+2025-11-07 10:37:56,218 | INFO    | wait | Associados DOC: full=14 mat_bin=0 bin=0 | Final=14
+2025-11-07 10:37:56,245 | INFO    | wait | Exemplo registros prontos: [{'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-001', 'material': '1520250032', 'quantity': 900.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-002', 'material': '1510206030', 'quantity': 1000.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-003', 'material': '1510283009', 'quantity': 2000.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-004', 'material': '1520221021', 'quantity': 5.0, 'doc': '1063', 'deposit_type': 'H0A'}, {'center': 'BR20', 'deposit': '2050', 'bin': 'MKT-005', 'material': 'R907190861', 'quantity': 8520.0, 'doc': '1063', 'deposit_type': 'H0A'}]
+2025-11-07 10:37:56,281 | INFO    | wait | Registros recebidos (DB): 14 | Válidos p/ lançamento: 14 | Pulados (campos vazios/nan): 0
+2025-11-07 10:37:57,307 | INFO    | wait | Warehouse definido: BR2
+2025-11-07 10:37:57,926 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 10:38:00,042 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 10:38:00,828 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:38:00,859 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:38:00,881 | INFO    | wait | [Registro 1/14] {'inventory_record': '1063', 'material_number': '1520250032', 'storage_bin': 'MKT-001', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '900', 'quantity_alt': '900', 'ud': '', 'stock_total': '', '__doc__': '1063', '__last_in_doc__': False}
+2025-11-07 10:38:06,209 | INFO    | wait | Click Cancel
+2025-11-07 10:38:07,174 | INFO    | wait | Click Cancel
+2025-11-07 10:38:08,425 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 10:38:09,393 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 10:38:10,272 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 10:38:11,808 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 10:38:12,342 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:38:12,360 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:38:12,376 | INFO    | wait | [Registro 2/14] {'inventory_record': '1063', 'material_number': '1510206030', 'storage_bin': 'MKT-002', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '1000', 'quantity_alt': '1000', 'ud': '', 'stock_total': '', '__doc__': '1063', '__last_in_doc__': False}
+2025-11-07 10:38:17,774 | INFO    | wait | Click Cancel
+2025-11-07 10:38:18,725 | INFO    | wait | Click Cancel
+2025-11-07 10:38:19,644 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 10:38:20,642 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 10:38:21,556 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 10:38:23,127 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 10:38:23,703 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:38:23,711 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:38:23,747 | INFO    | wait | [Registro 3/14] {'inventory_record': '1063', 'material_number': '1510283009', 'storage_bin': 'MKT-003', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '2000', 'quantity_alt': '2000', 'ud': '', 'stock_total': '', '__doc__': '1063', '__last_in_doc__': False}
+2025-11-07 10:38:29,218 | INFO    | wait | Click Cancel
+2025-11-07 10:38:30,157 | INFO    | wait | Click Cancel
+2025-11-07 10:38:31,091 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 10:38:32,093 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 10:38:32,959 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 10:38:34,492 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 10:38:35,027 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:38:35,047 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:38:35,076 | INFO    | wait | [Registro 4/14] {'inventory_record': '1063', 'material_number': '1520221021', 'storage_bin': 'MKT-004', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '5', 'quantity_alt': '5', 'ud': '', 'stock_total': '', '__doc__': '1063', '__last_in_doc__': False}
+2025-11-07 10:38:40,510 | INFO    | wait | Click Cancel
+2025-11-07 10:38:41,477 | INFO    | wait | Click Cancel
+2025-11-07 10:38:42,411 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 10:38:43,384 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 10:38:44,326 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 10:38:45,844 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 10:38:46,385 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:38:46,395 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:38:46,427 | INFO    | wait | [Registro 5/14] {'inventory_record': '1063', 'material_number': 'R907190861', 'storage_bin': 'MKT-005', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '8520', 'quantity_alt': '8520', 'ud': '', 'stock_total': '', '__doc__': '1063', '__last_in_doc__': False}
+2025-11-07 10:38:51,809 | INFO    | wait | Click Cancel
+2025-11-07 10:38:52,742 | INFO    | wait | Click Cancel
+2025-11-07 10:38:53,676 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 10:38:54,619 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 10:38:55,460 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 10:38:56,975 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 10:38:57,525 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:38:57,545 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:38:57,561 | INFO    | wait | [Registro 6/14] {'inventory_record': '1063', 'material_number': 'R909083352', 'storage_bin': 'MKT-006', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '10832', 'quantity_alt': '10832', 'ud': '', 'stock_total': '', '__doc__': '1063', '__last_in_doc__': False}
+2025-11-07 10:39:03,027 | INFO    | wait | Click Cancel
+2025-11-07 10:39:03,976 | INFO    | wait | Click Cancel
+2025-11-07 10:39:04,893 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 10:39:05,865 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 10:39:06,725 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 10:39:08,259 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 10:39:08,828 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:39:08,851 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:39:08,878 | INFO    | wait | [Registro 7/14] {'inventory_record': '1063', 'material_number': '1810210139', 'storage_bin': 'MKT-007', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '80', 'quantity_alt': '80', 'ud': '', 'stock_total': '', '__doc__': '1063', '__last_in_doc__': False}
+2025-11-07 10:39:14,110 | INFO    | wait | Click Cancel
+2025-11-07 10:39:15,076 | INFO    | wait | Click Cancel
+2025-11-07 10:39:16,058 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 10:39:17,065 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 10:39:18,043 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 10:39:19,659 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 10:39:20,226 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:39:20,246 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:39:20,263 | INFO    | wait | [Registro 8/14] {'inventory_record': '1063', 'material_number': '1520100110', 'storage_bin': 'MKT-008', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '600', 'quantity_alt': '600', 'ud': '', 'stock_total': '', '__doc__': '1063', '__last_in_doc__': False}
+2025-11-07 10:39:25,992 | INFO    | wait | Click Cancel
+2025-11-07 10:39:27,194 | INFO    | wait | Click Cancel
+2025-11-07 10:39:28,277 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 10:39:29,350 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 10:39:30,259 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 10:39:31,826 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 10:39:32,439 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:39:32,462 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:39:32,513 | INFO    | wait | [Registro 9/14] {'inventory_record': '1063', 'material_number': '1900210306', 'storage_bin': 'MKT-009', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '3820', 'quantity_alt': '3820', 'ud': '', 'stock_total': '', '__doc__': '1063', '__last_in_doc__': False}
+2025-11-07 10:39:37,959 | INFO    | wait | Click Cancel
+2025-11-07 10:39:38,877 | INFO    | wait | Click Cancel
+2025-11-07 10:39:39,844 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 10:39:40,833 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 10:39:41,809 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 10:39:43,427 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 10:39:43,994 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:39:44,016 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:39:44,032 | INFO    | wait | [Registro 10/14] {'inventory_record': '1063', 'material_number': '1810210237', 'storage_bin': 'MKT-010', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '500', 'quantity_alt': '500', 'ud': '', 'stock_total': '', '__doc__': '1063', '__last_in_doc__': False}
+2025-11-07 10:39:49,626 | INFO    | wait | Click Cancel
+2025-11-07 10:39:50,661 | INFO    | wait | Click Cancel
+2025-11-07 10:39:51,594 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 10:39:52,622 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 10:39:53,544 | INFO    | wait | [STEP] Inventory record -> '1063' (tentativa 1)
+2025-11-07 10:39:55,129 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 10:39:55,693 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:39:55,709 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:39:55,741 | INFO    | wait | [Registro 11/14] {'inventory_record': '1063', 'material_number': 'R913037827', 'storage_bin': 'MKT-011', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '109', 'quantity_alt': '109', 'ud': '', 'stock_total': '', '__doc__': '1063', '__last_in_doc__': True}
+2025-11-07 10:40:01,226 | INFO    | wait | Click Cancel
+2025-11-07 10:40:02,277 | INFO    | wait | Click Save (finalizando DOC)
+2025-11-07 10:40:03,176 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 10:40:04,199 | INFO    | wait | OK: Tela INVENTORY disponível (após Save)
+2025-11-07 10:40:05,127 | INFO    | wait | [STEP] Inventory record -> '1065' (tentativa 1)
+2025-11-07 10:40:06,710 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 10:40:07,249 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:40:07,262 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:40:07,281 | INFO    | wait | [Registro 12/14] {'inventory_record': '1065', 'material_number': '6000171947', 'storage_bin': 'MKT-BANCAD', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '1980', 'quantity_alt': '1980', 'ud': '', 'stock_total': '', '__doc__': '1065', '__last_in_doc__': False}
+2025-11-07 10:40:12,776 | INFO    | wait | Click Cancel
+2025-11-07 10:40:13,726 | INFO    | wait | Click Cancel
+2025-11-07 10:40:14,662 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 10:40:15,619 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 10:40:16,509 | INFO    | wait | [STEP] Inventory record -> '1065' (tentativa 1)
+2025-11-07 10:40:18,003 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 10:40:18,545 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:40:18,568 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:40:18,582 | INFO    | wait | [Registro 13/14] {'inventory_record': '1065', 'material_number': '6000171510', 'storage_bin': 'MKT-PRAT7', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '12832', 'quantity_alt': '12832', 'ud': '', 'stock_total': '', '__doc__': '1065', '__last_in_doc__': False}
+2025-11-07 10:40:23,876 | INFO    | wait | Click Cancel
+2025-11-07 10:40:24,861 | INFO    | wait | Click Cancel
+2025-11-07 10:40:25,777 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 10:40:26,736 | INFO    | wait | OK: Tela INVENTORY disponível
+2025-11-07 10:40:27,644 | INFO    | wait | [STEP] Inventory record -> '1065' (tentativa 1)
+2025-11-07 10:40:29,210 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-07 10:40:29,744 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:40:29,762 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-07 10:40:29,783 | INFO    | wait | [Registro 14/14] {'inventory_record': '1065', 'material_number': '6000171334', 'storage_bin': 'PO-112', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': 'H0A', 'counted_quantity': '2000', 'quantity_alt': '2000', 'ud': '', 'stock_total': '', '__doc__': '1065', '__last_in_doc__': True}
+2025-11-07 10:40:35,246 | INFO    | wait | Click Cancel
+2025-11-07 10:40:36,279 | INFO    | wait | Click Save (finalizando DOC)
+2025-11-07 10:40:37,145 | INFO    | wait | Click Yes (confirma saída)
+2025-11-07 10:40:38,109 | INFO    | wait | OK: Tela INVENTORY disponível (após Save)
+2025-11-07 10:40:38,137 | INFO    | wait | Lançamentos (DB) concluídos com lógica Save por DOC.
+2025-11-07 10:40:38,146 | INFO    | wait | Fluxo concluído com sucesso.
+2025-11-07 10:40:38,179 | INFO    | wait | Pausa final 12.0s.
+2025-11-07 10:40:50,205 | INFO    | wait | Encerrando sessão.

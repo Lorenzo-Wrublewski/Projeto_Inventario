@@ -1,0 +1,149 @@
+2025-11-06 14:34:27,090 | INFO    | wait | Iniciando browser.
+2025-11-06 14:34:28,604 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-06 14:34:40,012 | INFO    | wait | Página estável.
+2025-11-06 14:34:40,200 | INFO    | wait | Abrindo transação: LI11N
+2025-11-06 14:34:40,220 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-06 14:34:41,767 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-06 14:34:43,037 | INFO    | wait | OK: Status livre
+2025-11-06 14:34:43,079 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-06 14:34:44,020 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable no SQL Server...
+2025-11-06 14:34:46,145 | INFO    | wait | Lendo template de referência: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-06 14:34:51,065 | WARNING | wait | Nem todas as colunas esperadas existem no template para o merge completo.
+2025-11-06 14:34:51,127 | INFO    | wait | Total de registros carregados do DB: 296
+2025-11-06 14:34:51,225 | INFO    | wait | Fluxo concluído com sucesso.
+2025-11-06 14:34:51,257 | INFO    | wait | Pausa final de 12.0s para visualização.
+2025-11-06 14:36:51,293 | INFO    | wait | Encerrando sessão.
+2025-11-06 14:37:37,626 | INFO    | wait | Iniciando browser.
+2025-11-06 14:37:39,049 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-06 14:37:50,197 | INFO    | wait | Página estável.
+2025-11-06 14:37:50,382 | INFO    | wait | Abrindo transação: LI11N
+2025-11-06 14:37:50,435 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-06 14:37:51,983 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-06 14:37:53,258 | INFO    | wait | OK: Status livre
+2025-11-06 14:37:53,288 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-06 14:37:54,173 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (filtrando Deposito = 'H0A')...
+2025-11-06 14:37:55,835 | INFO    | wait | Lendo template de referência: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-06 14:38:00,336 | WARNING | wait | Nem todas as colunas esperadas existem no template para o merge completo.
+2025-11-06 14:38:00,376 | INFO    | wait | Total de registros carregados do DB: 0
+2025-11-06 14:38:00,437 | WARNING | wait | Nenhum registro retornado do banco. Encerrando fluxo.
+2025-11-06 14:38:00,476 | INFO    | wait | Fluxo concluído com sucesso.
+2025-11-06 14:38:00,505 | INFO    | wait | Pausa final de 12.0s para visualização.
+2025-11-06 14:40:00,542 | INFO    | wait | Encerrando sessão.
+2025-11-06 14:41:12,149 | INFO    | wait | Iniciando browser.
+2025-11-06 14:41:13,628 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-06 14:41:28,966 | INFO    | wait | Página estável.
+2025-11-06 14:41:29,162 | INFO    | wait | Abrindo transação: LI11N
+2025-11-06 14:41:29,183 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-06 14:41:30,732 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-06 14:41:32,011 | INFO    | wait | OK: Status livre
+2025-11-06 14:41:32,054 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-06 14:41:32,935 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (filtrando Tipo Deposito = 'H0A')...
+2025-11-06 14:41:34,513 | INFO    | wait | Registros retornados (Tipo Deposito=H0A): 14
+2025-11-06 14:41:34,551 | INFO    | wait | Exemplos TipoDeposito: ['H0A']
+2025-11-06 14:41:34,587 | INFO    | wait | Lendo template de referência: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-06 14:41:44,162 | WARNING | wait | Merge parcial. Colunas disponíveis: ['Centro', 'Material']
+2025-11-06 14:41:44,209 | INFO    | wait | Total de registros carregados do DB: 14
+2025-11-06 14:41:44,304 | INFO    | wait | Fluxo concluído com sucesso.
+2025-11-06 14:41:44,333 | INFO    | wait | Pausa final de 12.0s para visualização.
+2025-11-06 14:43:44,367 | INFO    | wait | Encerrando sessão.
+2025-11-06 14:44:05,955 | INFO    | wait | Iniciando browser.
+2025-11-06 14:44:07,468 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-06 14:44:20,755 | INFO    | wait | Página estável.
+2025-11-06 14:44:20,931 | INFO    | wait | Abrindo transação: LI11N
+2025-11-06 14:44:20,968 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-06 14:44:22,495 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-06 14:44:23,783 | INFO    | wait | OK: Status livre
+2025-11-06 14:44:23,820 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-06 14:44:24,733 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (filtrando Tipo Deposito = 'H0A')...
+2025-11-06 14:44:25,997 | INFO    | wait | Registros retornados (Tipo Deposito=H0A): 14
+2025-11-06 14:44:26,020 | INFO    | wait | Lendo template de referência: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-06 14:44:35,426 | ERROR   | wait | [ERRO][UNKNOWN] Stage=fetch_counting_records | You are trying to merge on object and float64 columns for key 'Deposito'. If you wish to proceed you should use pd.concat | Hint: Sem dica.
+2025-11-06 14:44:36,665 | INFO    | wait | Screenshot salva: err_unknown_20251106_144435.png
+2025-11-06 14:44:36,700 | ERROR   | wait | [ERRO][UNKNOWN] Stage=unexpected | You are trying to merge on object and float64 columns for key 'Deposito'. If you wish to proceed you should use pd.concat | Hint: Sem dica.
+2025-11-06 14:44:37,604 | INFO    | wait | Screenshot salva: err_unknown_20251106_144436.png
+2025-11-06 14:44:37,640 | INFO    | wait | Encerrando sessão.
+2025-11-06 14:45:48,977 | INFO    | wait | Iniciando browser.
+2025-11-06 14:45:50,334 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-06 14:46:01,242 | INFO    | wait | Página estável.
+2025-11-06 14:46:01,422 | INFO    | wait | Abrindo transação: LI11N
+2025-11-06 14:46:01,449 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-06 14:46:02,961 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-06 14:46:04,253 | INFO    | wait | OK: Status livre
+2025-11-06 14:46:04,289 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-06 14:46:05,181 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (filtrando Tipo Deposito = 'H0A')...
+2025-11-06 14:46:06,163 | INFO    | wait | Registros retornados (Tipo Deposito=H0A): 14
+2025-11-06 14:46:06,197 | INFO    | wait | Lendo template de referência: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-06 14:46:15,749 | INFO    | wait | Coluna Centro: dtype template=object, dtype db=object
+2025-11-06 14:46:15,782 | INFO    | wait | Coluna Deposito: dtype template=object, dtype db=object
+2025-11-06 14:46:15,816 | INFO    | wait | Coluna Posição no Deposito: dtype template=object, dtype db=object
+2025-11-06 14:46:15,849 | INFO    | wait | Coluna Material: dtype template=object, dtype db=object
+2025-11-06 14:46:15,889 | INFO    | wait | Total de registros carregados do DB: 14
+2025-11-06 14:46:15,970 | INFO    | wait | Fluxo concluído com sucesso.
+2025-11-06 14:46:16,003 | INFO    | wait | Pausa final de 12.0s para visualização.
+2025-11-06 14:48:16,038 | INFO    | wait | Encerrando sessão.
+2025-11-06 14:52:36,592 | INFO    | wait | Iniciando browser.
+2025-11-06 14:52:38,267 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-06 14:52:49,906 | INFO    | wait | Página estável.
+2025-11-06 14:52:50,106 | INFO    | wait | Abrindo transação: LI11N
+2025-11-06 14:52:50,141 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-06 14:52:51,933 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-06 14:52:53,356 | INFO    | wait | OK: Status livre
+2025-11-06 14:52:53,393 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-06 14:52:54,341 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (Tipo Deposito='H0A')...
+2025-11-06 14:52:55,640 | INFO    | wait | Registros DB (H0A): 14
+2025-11-06 14:52:55,673 | INFO    | wait | Lendo template: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-06 14:53:05,496 | INFO    | wait | Total registros preparados: 14
+2025-11-06 14:53:05,557 | ERROR   | wait | [ERRO][UNKNOWN] Stage=single_record_entries | process_single_record_entries() got an unexpected keyword argument 'records' | Hint: Sem dica.
+2025-11-06 14:53:06,964 | INFO    | wait | Screenshot salva: err_unknown_20251106_145305.png
+2025-11-06 14:53:06,991 | ERROR   | wait | [ERRO][UNKNOWN] Stage=unexpected | process_single_record_entries() got an unexpected keyword argument 'records' | Hint: Sem dica.
+2025-11-06 14:53:07,906 | INFO    | wait | Screenshot salva: err_unknown_20251106_145307.png
+2025-11-06 14:53:07,945 | INFO    | wait | Encerrando sessão.
+2025-11-06 14:55:09,368 | INFO    | wait | Iniciando browser.
+2025-11-06 14:55:10,839 | INFO    | wait | Acessando URL: http://rb3qraa0.server.bosch.com:8001/sap/bc/gui/sap/its/webgui/#
+2025-11-06 14:55:22,171 | INFO    | wait | Página estável.
+2025-11-06 14:55:22,337 | INFO    | wait | Abrindo transação: LI11N
+2025-11-06 14:55:22,372 | INFO    | wait | Preencher 'Enter transaction code' com 'LI11N'
+2025-11-06 14:55:23,857 | INFO    | wait | [STEP] Preencher 'Enter transaction code' com 'LI11N'
+2025-11-06 14:55:25,141 | INFO    | wait | OK: Status livre
+2025-11-06 14:55:25,175 | INFO    | wait | [STEP] Estado estável pós-ação
+2025-11-06 14:55:26,066 | INFO    | wait | Consultando view dbo.vw_PowerBI_DataTable (Tipo Deposito='H0A')...
+2025-11-06 14:55:27,056 | INFO    | wait | Registros DB (H0A): 14
+2025-11-06 14:55:27,086 | INFO    | wait | Lendo template: \\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx
+2025-11-06 14:55:36,608 | INFO    | wait | Total registros preparados: 14
+2025-11-06 14:55:36,682 | INFO    | wait | Contagem (DB) carregada: 14 registros.
+2025-11-06 14:55:45,028 | INFO    | wait | Template referência carregado: 126 linhas.
+2025-11-06 14:55:45,063 | INFO    | wait | Iniciando composição de lançamentos com referência. Registros contagem=14
+2025-11-06 14:55:45,093 | INFO    | wait | [1/14] Sem referência p/ Material=1520250032 Bin=MKT-001. Lançando total direto.
+2025-11-06 14:55:45,123 | INFO    | wait | [2/14] Sem referência p/ Material=1510206030 Bin=MKT-002. Lançando total direto.
+2025-11-06 14:55:45,154 | INFO    | wait | [3/14] Sem referência p/ Material=1510283009 Bin=MKT-003. Lançando total direto.
+2025-11-06 14:55:45,175 | INFO    | wait | [4/14] Sem referência p/ Material=1520221021 Bin=MKT-004. Lançando total direto.
+2025-11-06 14:55:45,204 | INFO    | wait | [5/14] Sem referência p/ Material=R907190861 Bin=MKT-005. Lançando total direto.
+2025-11-06 14:55:45,237 | INFO    | wait | [6/14] Sem referência p/ Material=R909083352 Bin=MKT-006. Lançando total direto.
+2025-11-06 14:55:45,270 | INFO    | wait | [7/14] Sem referência p/ Material=1810210139 Bin=MKT-007. Lançando total direto.
+2025-11-06 14:55:45,304 | INFO    | wait | [8/14] Sem referência p/ Material=1520100110 Bin=MKT-008. Lançando total direto.
+2025-11-06 14:55:45,337 | INFO    | wait | [9/14] Sem referência p/ Material=1900210306 Bin=MKT-009. Lançando total direto.
+2025-11-06 14:55:45,369 | INFO    | wait | [10/14] Sem referência p/ Material=1810210237 Bin=MKT-010. Lançando total direto.
+2025-11-06 14:55:45,398 | INFO    | wait | [11/14] Sem referência p/ Material=R913037827 Bin=MKT-011. Lançando total direto.
+2025-11-06 14:55:45,421 | INFO    | wait | [12/14] Sem referência p/ Material=6000171947 Bin=MKT-BANCAD. Lançando total direto.
+2025-11-06 14:55:45,454 | INFO    | wait | [13/14] Sem referência p/ Material=6000171510 Bin=MKT-PRAT7. Lançando total direto.
+2025-11-06 14:55:45,490 | INFO    | wait | [14/14] Sem referência p/ Material=6000171334 Bin=PO-112. Lançando total direto.
+2025-11-06 14:55:45,521 | INFO    | wait | Total linhas para lançar: 14
+2025-11-06 14:55:46,852 | INFO    | wait | [STEP] Inventory record -> 'nan' (tentativa 1)
+2025-11-06 14:55:50,664 | INFO    | wait | Botão 'Single Record Entry' clicado.
+2025-11-06 14:55:51,327 | INFO    | wait | OK: Campo 'Storage Bin' visível (SRE)
+2025-11-06 14:55:51,353 | INFO    | wait | [Registro 1/14] {'inventory_record': 'nan', 'material_number': '1520250032', 'storage_bin': 'MKT-001', 'plant': 'BR20', 'storage_location': '2050', 'storage_type': '', 'counted_quantity': '0', 'quantity_alt': '0', 'ud': '', 'stock_total': ''}
+2025-11-06 14:55:58,612 | ERROR   | wait | [Registro 1/14] Erro inesperado: Locator.wait_for: Timeout 5000ms exceeded.
+Call log:
+  - waiting for get_by_role("textbox", name="Material Number") to be visible
+
+2025-11-06 14:55:58,952 | INFO    | wait | Estado antes do Cancel final: INVENTORY
+2025-11-06 14:55:58,997 | INFO    | wait | Já em INVENTORY.
+2025-11-06 14:55:59,651 | INFO    | wait | Click Cancel
+2025-11-06 14:56:02,017 | INFO    | wait | Estado após Cancel final: UNKNOWN
+2025-11-06 14:56:02,058 | WARNING | wait | Tentando segundo Cancel.
+2025-11-06 14:56:07,358 | WARNING | wait | Não foi possível clicar em Cancel (não visível).
+2025-11-06 14:56:09,431 | INFO    | wait | Estado após segunda tentativa: UNKNOWN
+2025-11-06 14:56:09,453 | WARNING | wait | Não retornou INVENTORY.
+2025-11-06 14:56:12,028 | INFO    | wait | Estado antes do Cancel final: UNKNOWN
+2025-11-06 14:56:13,762 | INFO    | wait | Encerrando sessão.
+2025-11-06 14:56:13,949 | ERROR   | wait | Erro ao fechar sessão: BrowserContext.close: Target page, context or browser has been closed
