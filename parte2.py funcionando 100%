@@ -1,0 +1,272 @@
+# parte2.py
+import sys
+import time
+import csv
+from pathlib import Path
+from playwright.sync_api import sync_playwright
+from lib.logger import get_logger
+from lib.config import settings
+from lib.sap_session import SAPSession
+from lib.exceptions import (
+    ElementNotFound,
+    ActionTimeout,
+    PageNotIdle,
+    SAPMessageError,
+    AutomationError,
+)
+from lib.error_handling import handle_flow_exception
+from lib.single_record_entry import process_single_record_entries
+# REMOVIDO import pyodbc (não mais necessário)
+import pandas as pd
+import unicodedata
+
+def _norm(v: str | None) -> str:
+    if v is None:
+        return ""
+    s = str(v).strip()
+    s = "".join(c for c in unicodedata.normalize("NFD", s) if unicodedata.category(c) != "Mn")
+    return s.upper()
+
+# Caminho novo da fonte de contagem (CSV)
+COUNTING_REPORT_FILE = r"\\ca0vm0126\FONTES\Python\Projeto_Inventário\Relatorio_Contagem.csv"
+REFERENCE_REPORT_FILE = r"\\ca0vm0126\FONTES\Python\Projeto_Inventário\Template_RPA.xlsx"
+
+log = get_logger("main")
+
+def fetch_counting_records(reference_report_path: str, include_zero_for_missing: bool = True) -> list[dict]:
+    """
+    Lê registros de contagem a partir do arquivo CSV Relatorio_Contagem.csv (Tipo Deposito='H0A')
+    e associa DOC vindo de Template_RPA.xlsx.
+    Se include_zero_for_missing=True, adiciona registros (quantidade 0) para cada linha do template
+    TipoDeposito H0A que não apareceu no CSV.
+    AGORA: permite Material vazio nas linhas zeradas (não será digitado no SAP).
+    """
+    log.info(f"Lendo fonte de contagem CSV: {COUNTING_REPORT_FILE}")
+    csv_path = Path(COUNTING_REPORT_FILE)
+    if not csv_path.is_file():
+        log.error(f"Arquivo de contagem não encontrado: {csv_path}")
+        raise FileNotFoundError(str(csv_path))
+
+    read_success = False
+    last_error = None
+    for sep in [",", ";", "\t"]:
+        try:
+            df_src = pd.read_csv(csv_path, sep=sep, dtype=str, keep_default_na=False)
+            if "Material" in df_src.columns:
+                read_success = True
+                break
+        except Exception as e:
+            last_error = e
+    if not read_success:
+        log.error(f"Falha ao ler CSV. Último erro: {last_error}")
+        raise RuntimeError(f"Não foi possível interpretar o CSV {csv_path}")
+
+    rename_map_src = {
+        "Posição no Deposito": "PosicaoDeposito",
+        "Posição no depósito": "PosicaoDeposito",
+        "Posicao no Deposito": "PosicaoDeposito",
+        "Depósito": "Deposito",
+        "Deposito": "Deposito",
+        "Tipo Deposito": "TipoDeposito",
+        "Tipo de depósito": "TipoDeposito",
+        "Quantidade Eleita": "QuantidadeEleita",
+        "Qtd Eleita": "QuantidadeEleita",
+    }
+    for k, v in rename_map_src.items():
+        if k in df_src.columns and v not in df_src.columns:
+            df_src = df_src.rename(columns={k: v})
+
+    for c in ["Centro","Deposito","PosicaoDeposito","Material","TipoDeposito","QuantidadeEleita"]:
+        if c not in df_src.columns:
+            df_src[c] = ""
+
+    df_src = df_src[df_src["TipoDeposito"].astype(str).str.strip().str.upper() == "H0A"]
+    log.info(f"Registros CSV (H0A): {len(df_src)}")
+
+    log.info(f"Lendo template estoque: {reference_report_path}")
+    try:
+        df_tpl = pd.read_excel(reference_report_path, engine="openpyxl")
+    except Exception as e:
+        log.error(f"Erro lendo template: {e}")
+        raise
+
+    rename_map_tpl = {
+        "Depósito": "Deposito",
+        "Dep\u00f3sito": "Deposito",
+        "Posição no depósito": "PosicaoDeposito",
+        "Posi\u00e7\u00e3o no dep\u00f3sito": "PosicaoDeposito",
+        "Tipo de depósito": "TipoDeposito",
+        "Tipo Deposito": "TipoDeposito",
+        "Tipo deposito": "TipoDeposito",
+        "Tipo de Deposito": "TipoDeposito",
+        "Tipo de deposito": "TipoDeposito",
+    }
+    for k, v in rename_map_tpl.items():
+        if k in df_tpl.columns and v not in df_tpl.columns:
+            df_tpl = df_tpl.rename(columns={k: v})
+
+    for c in ["Centro","Deposito","PosicaoDeposito","Material","DOC","TipoDeposito"]:
+        if c not in df_tpl.columns:
+            df_tpl[c] = ""
+        df_tpl[c] = df_tpl[c].fillna("").astype(str).str.strip()
+
+    full_index: dict[tuple, str] = {}
+    mat_bin_index: dict[tuple, str] = {}
+    bin_index: dict[str, str] = {}
+
+    for _, row in df_tpl.iterrows():
+        doc = row.get("DOC","").strip()
+        if not doc:
+            continue
+        centro = _norm(row.get("Centro"))
+        deposito = _norm(row.get("Deposito"))
+        material = _norm(row.get("Material"))
+        bin_ = _norm(row.get("PosicaoDeposito"))
+        if centro and deposito and material and bin_:
+            full_index[(centro, deposito, material, bin_)] = doc
+        elif material and bin_:
+            mat_bin_index[(material, bin_)] = doc
+        elif bin_:
+            bin_index[bin_] = doc
+
+    log.info(f"Índice DOC: full={len(full_index)} mat_bin={len(mat_bin_index)} bin={len(bin_index)}")
+
+    for c in ["Centro","Deposito","PosicaoDeposito","Material"]:
+        df_src[c] = df_src[c].fillna("").astype(str).str.strip()
+
+    records: list[dict] = []
+    hit_full = hit_mat_bin = hit_bin = 0
+
+    for _, r in df_src.iterrows():
+        centro_n = _norm(r["Centro"])
+        deposito_n = _norm(r["Deposito"])
+        material_n = _norm(r["Material"])
+        bin_n = _norm(r["PosicaoDeposito"])
+
+        doc = None
+        key_full = (centro_n, deposito_n, material_n, bin_n)
+        if key_full in full_index:
+            doc = full_index[key_full]; hit_full += 1
+        elif (material_n, bin_n) in mat_bin_index:
+            doc = mat_bin_index[(material_n, bin_n)]; hit_mat_bin += 1
+        elif bin_n in bin_index:
+            doc = bin_index[bin_n]; hit_bin += 1
+
+        if not doc:
+            continue
+        # Mantém exigência de centro/deposito/bin; material pode ser vazio somente nas linhas zeradas do template, então aqui ainda exige.
+        if not (r["Material"] and r["Centro"] and r["Deposito"]):
+            continue
+
+        records.append({
+            "center": r["Centro"],
+            "deposit": r["Deposito"],
+            "bin": r["PosicaoDeposito"],
+            "material": r["Material"],
+            "quantity": r.get("QuantidadeEleita"),
+            "doc": doc,
+            "deposit_type": r.get("TipoDeposito"),
+            "allow_blank_material": False
+        })
+
+    log.info(f"Associados DOC (CSV): full={hit_full} mat_bin={hit_mat_bin} bin={hit_bin} | Parcial={len(records)}")
+
+    # --- Inclusão de itens do template não presentes no CSV (quantidade 0) ---
+    if include_zero_for_missing:
+        existing_keys = {
+            (_norm(r["center"]), _norm(r["deposit"]), _norm(r["material"]), _norm(r["bin"]))
+            for r in records
+        }
+        added_zero = 0
+        for _, row in df_tpl.iterrows():
+            doc = row.get("DOC","").strip()
+            tipo = str(row.get("TipoDeposito","")).strip().upper()
+            if tipo != "H0A":
+                continue
+            centro = row.get("Centro","").strip()
+            deposito = row.get("Deposito","").strip()
+            material = row.get("Material","").strip()  # pode ser vazio AGORA
+            bin_ = row.get("PosicaoDeposito","").strip()
+            if not doc:
+                continue
+            if not (centro and deposito and bin_):  # material não é mais obrigatório
+                continue
+            key = (_norm(centro), _norm(deposito), _norm(material), _norm(bin_))
+            if key in existing_keys:
+                continue
+            records.append({
+                "center": centro,
+                "deposit": deposito,
+                "bin": bin_,
+                "material": material,          # vazio permitido
+                "quantity": "0",
+                "doc": doc,
+                "deposit_type": tipo,
+                "allow_blank_material": (material == "")
+            })
+            existing_keys.add(key)
+            added_zero += 1
+        log.info(f"Adicionados {added_zero} registros zerados (template H0A, material pode ser vazio).")
+
+    if not records:
+        log.warning("Nenhum registro associado final.")
+    else:
+        log.info(f"Total final registros (incluindo zerados e material vazio): {len(records)}")
+    return records
+
+def run(transaction_code: str = "LI11N", inventory_number: str | None = None):
+    with sync_playwright() as pw:
+        sap = SAPSession(pw).start()
+        try:
+            sap.goto_base()
+            sap.open_transaction(transaction_code)
+
+            ref_path = Path(REFERENCE_REPORT_FILE)
+            if not ref_path.is_file():
+                log.error(f"Template não encontrado: {ref_path}")
+                raise FileNotFoundError(str(ref_path))
+
+            try:
+                records = fetch_counting_records(str(ref_path))
+            except Exception as e:
+                handle_flow_exception(e, sap, "fetch_counting_records")
+                raise
+
+            if not records:
+                log.warning("Nenhum registro retornado da fonte CSV. Encerrando.")
+            else:
+                try:
+                    process_single_record_entries(
+                        sap.page,
+                        reference_report_path=str(ref_path),
+                        records=records
+                    )
+                except Exception as e:
+                    handle_flow_exception(e, sap, "single_record_entries")
+                    raise
+
+            log.info("Fluxo concluído com sucesso.")
+
+            if settings.FINAL_PAUSE_S > 0:
+                log.info(f"Pausa final {settings.FINAL_PAUSE_S}s.")
+                time.sleep(settings.FINAL_PAUSE_S)
+
+            if settings.REQUIRE_KEYPRESS_END:
+                try:
+                    input("ENTER para fechar...")
+                except Exception:
+                    pass
+
+        except SAPMessageError as e:
+            handle_flow_exception(e, sap, "sap_message"); raise
+        except AutomationError as e:
+            handle_flow_exception(e, sap, "automation_generic"); raise
+        except Exception as e:
+            handle_flow_exception(e, sap, "unexpected"); raise
+        finally:
+            sap.close()
+
+if __name__ == "__main__":
+    tx = sys.argv[1] if len(sys.argv) > 1 else "LI11N"
+    inv_arg = sys.argv[2] if len(sys.argv) > 2 else None
+    run(tx, inv_arg)
