@@ -1,0 +1,668 @@
+# single_record_entry.py
+# filepath: \\ca0vm0126\FONTES\Python\Projeto_Inventário\@Parte 2\lib\single_record_entry.py
+# === LIMPEZA / CORREÇÃO: remove linha solta 'tela', corrige _mark_last, remove duplicatas e erros ===
+import csv
+import re
+import time
+import unicodedata
+from pathlib import Path
+from typing import List, Dict, Optional, Tuple
+from playwright.sync_api import Page
+from .logger import get_logger
+from .exceptions import ElementNotFound
+from .config import settings
+from .wait_utils import wait_for  # reutiliza função genérica
+from .page_actions import fill_role_textbox  # se ainda não importado
+
+log = get_logger("single_record")
+
+# --- CONFIG TEMPOS ---
+STEP_PAUSE = 0.25
+POLL_PAUSE = 0.20
+ENTER_WAIT_S = 6.0        # mais tolerante para slowness
+SRE_WAIT_S = 6.0
+AFTER_SAVE_WAIT_S = 18.0  # tempo máximo esperando voltar TELA1 após Save
+
+WAREHOUSE_VALUE = getattr(settings, "WAREHOUSE_VALUE", "").strip() or "BR2"
+
+def _sleep(t=STEP_PAUSE): time.sleep(t)
+
+# Campos padrão usados no SAP + novos para lógica UD
+EXPECTED_HEADERS = {
+    "storage bin": "storage_bin",
+    "material number": "material_number",
+    "counted quantity in alternative unit of measure": "quantity_alt",
+    "storage location": "storage_location",
+    "plant": "plant",
+}
+
+# Aliases ampliados
+SRE_HEADER_ALIASES = {
+    "posicao no deposito": "storage_bin",
+    "posição no depósito": "storage_bin",
+    "material": "material_number",
+    "qtd.contada": "counted_quantity",  # campo lógico principal de contagem
+    "deposito": "storage_location",
+    "depósito": "storage_location",
+    "centro": "plant",
+    "tipo de depósito": "storage_type",
+    "tipo de deposito": "storage_type",
+    "estoque total": "stock_total",
+    "ud": "ud",
+}
+
+# Documento inventário
+SRE_HEADER_ALIASES.update({
+    "documento inventario": "inventory_record",
+    "documento inventário": "inventory_record",
+})
+
+def _norm(s: str) -> str:
+    return "".join(c for c in unicodedata.normalize("NFD", s) if unicodedata.category(c) != "Mn").lower().strip()
+
+def _parse_number(num_str: str) -> float:
+    """
+    Converte '326,00' ou '5,00' em float 326.00 / 5.00.
+    Ignora vazio => 0.0.
+    """
+    if not num_str:
+        return 0.0
+    s = str(num_str).strip()
+    if not s:
+        return 0.0
+    # remove possíveis separadores de milhar (.)
+    if s.count(",") == 1 and s.count(".") >= 1:
+        # heurística: remover pontos e trocar vírgula
+        s = s.replace(".", "")
+    s = s.replace(",", ".")
+    try:
+        return float(s)
+    except Exception:
+        return 0.0
+
+def _format_quantity(val) -> str:
+    """
+    Formata número para string SAP:
+      Inteiro sem decimais
+      Decimal com até 4 casas, removendo zeros à direita
+      Usa vírgula como separador decimal.
+    """
+    try:
+        v = float(val)
+    except Exception:
+        try:
+            v = _parse_number(val)
+        except Exception:
+            return str(val)
+    if v.is_integer():
+        return str(int(v))
+    s = f"{v:.4f}".rstrip("0").rstrip(".")
+    return s.replace(".", ",")
+
+def load_single_record_csv(csv_path: str, delimiter: str = ";") -> List[Dict[str, str]]:
+    path = Path(csv_path)
+    if not path.is_file():
+        raise FileNotFoundError(f"Arquivo CSV não encontrado: {csv_path}")
+    rows: List[Dict[str, str]] = []
+    with path.open("r", encoding="utf-8-sig") as f:
+        reader = csv.reader(f, delimiter=delimiter)
+        header_map: Dict[int, str] = {}
+        try:
+            raw_header = next(reader)
+        except StopIteration:
+            return rows
+        for idx, col in enumerate(raw_header):
+            key_norm = _norm(col)
+            if key_norm in SRE_HEADER_ALIASES:
+                header_map[idx] = SRE_HEADER_ALIASES[key_norm]
+            elif key_norm in EXPECTED_HEADERS:
+                header_map[idx] = EXPECTED_HEADERS[key_norm]
+        if not header_map:
+            log.warning("Cabeçalho não reconhecido no CSV principal.")
+        for line in reader:
+            if not any(cell.strip() for cell in line):
+                continue
+            rows.append({v: (line[i].strip() if i < len(line) else "") for i, v in header_map.items()})
+    log.info(f"Carregado CSV '{csv_path}' com {len(rows)} registros.")
+    return rows
+
+def _fix_storage_bin(val: str) -> str:
+    if val is None:
+        return ""
+    s = str(val).strip()
+    if not s:
+        return ""
+    if re.fullmatch(r"\d+(\.0)?", s):
+        if s.endswith(".0"):
+            s = s[:-2]
+        if 5 <= len(s) < 10:
+            s = s.zfill(10)
+        return s
+    return s
+
+def load_single_record_excel(excel_path: str) -> List[Dict[str, str]]:
+    import pandas as pd
+    if not Path(excel_path).is_file():
+        raise FileNotFoundError(f"Arquivo Excel não encontrado: {excel_path}")
+    df = pd.read_excel(excel_path, engine="pyxlsb")
+    col_map: Dict[str, str] = {}
+    for col in df.columns:
+        n = _norm(str(col))
+        if n in SRE_HEADER_ALIASES:
+            col_map[col] = SRE_HEADER_ALIASES[n]
+        elif n in EXPECTED_HEADERS:
+            col_map[col] = EXPECTED_HEADERS[n]
+    if "inventory_record" not in col_map.values():
+        raise ValueError("Coluna 'Documento inventário' obrigatória não encontrada no Excel.")
+    rows: List[Dict[str, str]] = []
+    for _, r in df.iterrows():
+        std = {
+            "inventory_record": "",
+            "storage_bin": "",
+            "material_number": "",
+            "quantity_alt": "",
+            "counted_quantity": "",
+            "storage_location": "",
+            "plant": "",
+            "storage_type": "",
+            "stock_total": "",
+            "ud": ""
+        }
+        for orig, std_key in col_map.items():
+            std[std_key] = str(r.get(orig, "")).strip()
+        std["storage_bin"] = _fix_storage_bin(std["storage_bin"])
+        # Se counted_quantity presente, replica para quantity_alt para envio ao SAP
+        if std.get("counted_quantity"):
+            std["quantity_alt"] = std["counted_quantity"]
+        # Filtra linhas essencialmente vazias
+        if any(v for v in std.values()):
+            rows.append(std)
+    log.info(f"Carregado Excel '{excel_path}' com {len(rows)} registros.")
+    return rows
+
+def _single_record_button_locator(page: Page):
+    time.sleep(1)
+    return page.locator("div").filter(has_text=re.compile(r"^Single Record Entry$"))
+
+def load_single_record_file(path: str) -> List[Dict[str, str]]:
+    ext = Path(path).suffix.lower()
+    if ext == ".xlsb":
+        return load_single_record_excel(path)
+    if ext == ".csv":
+        return load_single_record_csv(path)
+    raise ValueError(f"Extensão não suportada: {ext} (use .xlsb ou .csv)")
+
+# Substituir antiga load_marcelo_report por função genérica:
+def load_comparison_report(path_str: str) -> List[Dict[str, str]]:
+    """
+    Lê relatório de comparação (Excel .xlsx/.xls ou .csv).
+    Campos relevantes: material_number, storageBin, stock_total, (plant, storage_location se existirem).
+    """
+    if not path_str:
+        return []
+    path = Path(path_str)
+    try:
+        if not path.is_file():
+            log.warning(f"Relatório referência não encontrado: {path_str}")
+            return []
+    except PermissionError:
+        log.warning(f"Sem permissão para acessar '{path_str}'. Comparação UD ignorada.")
+        return []
+
+    ext = path.suffix.lower()
+    rows: List[Dict[str, str]] = []
+    if ext in [".xlsx", ".xls"]:
+        try:
+            import pandas as pd
+        except ImportError:
+            log.warning("pandas não disponível para leitura do Excel de referência. Ignorando comparação.")
+            return []
+        try:
+            df = pd.read_excel(path_str, engine="openpyxl")
+        except PermissionError:
+            log.warning(f"Permissão negada ao ler '{path_str}'. Ignorando comparação.")
+            return []
+        # Mapear colunas
+        col_map: Dict[str, str] = {}
+        for col in df.columns:
+            n = _norm(str(col))
+            if n in SRE_HEADER_ALIASES:
+                col_map[col] = SRE_HEADER_ALIASES[n]
+            elif n in EXPECTED_HEADERS:
+                col_map[col] = EXPECTED_HEADERS[n]
+        for _, r in df.iterrows():
+            entry = {}
+            for orig, std_key in col_map.items():
+                entry[std_key] = str(r.get(orig, "")).strip()
+            if any(entry.values()):
+                rows.append(entry)
+        log.info(f"Carregado relatório referência Excel '{path_str}' com {len(rows)} registros.")
+        return rows
+
+    # CSV fallback
+    delimiter = ";"
+    try:
+        with path.open("r", encoding="utf-8-sig") as f:
+            reader = csv.reader(f, delimiter=delimiter)
+            try:
+                raw_header = next(reader)
+            except StopIteration:
+                return rows
+            header_map: Dict[int, str] = {}
+            for idx, col in enumerate(raw_header):
+                n = _norm(col)
+                if n in SRE_HEADER_ALIASES:
+                    header_map[idx] = SRE_HEADER_ALIASES[n]
+                elif n in EXPECTED_HEADERS:
+                    header_map[idx] = EXPECTED_HEADERS[n]
+            for line in reader:
+                if not any(cell.strip() for cell in line):
+                    continue
+                rows.append({v: (line[i].strip() if i < len(line) else "") for i, v in header_map.items()})
+    except PermissionError:
+        log.warning(f"Permissão negada ao ler '{path_str}'. Ignorando comparação.")
+        return []
+    log.info(f"Carregado relatório referência CSV '{path_str}' com {len(rows)} registros.")
+    return rows
+
+def _wait_and_click(page: Page, regex_text: str, timeout_ms: Optional[int] = None):
+    timeout_ms = timeout_ms or settings.DEFAULT_TIMEOUT
+    locator = page.locator("div").filter(has_text=re.compile(regex_text))
+    locator.first.wait_for(state="visible", timeout=timeout_ms)
+    locator.first.click()
+
+def _fill_field(page: Page, role_name: str, value: str):
+    value = value or ""
+    tb = page.get_by_role("textbox", name=role_name)
+    tb.first.wait_for(state="visible", timeout=settings.DEFAULT_TIMEOUT)
+    tb.first.click()
+    tb.first.fill(value)
+
+def _click_cancel_once(page: Page) -> bool:
+    locs = [
+        page.locator("div").filter(has_text=re.compile(r"^Cancel$")),
+        page.get_by_role("button", name=re.compile(r"^Cancel$", re.I))
+    ]
+    for loc in locs:
+        try:
+            if loc.count() > 0 and loc.first.is_visible():
+                loc.first.click()
+                log.info("Click Cancel")
+                return True
+        except:
+            pass
+    return False
+
+def _confirm_exit_yes(page: Page, timeout_s: float = 3.0) -> bool:
+    end = time.time() + timeout_s
+    clicked = False
+    while time.time() < end:
+        try:
+            variants = [
+                page.get_by_title("Yes"),
+                page.get_by_role("button", name=re.compile(r"^(Yes|Sim)$", re.I)),
+                page.locator("button").filter(has_text=re.compile(r"^(Yes|Sim)$", re.I)),
+                page.locator("div").filter(has_text=re.compile(r"^(Yes|Sim)$", re.I)),
+            ]
+            for v in variants:
+                if v.count() > 0 and v.first.is_visible():
+                    v.first.click()
+                    log.info("Click Yes")
+                    clicked = True
+                    _sleep(0.2)
+                    break
+            if clicked:
+                # Se popup sumiu retorna
+                still = False
+                for v in variants:
+                    if v.count() > 0 and v.first.is_visible():
+                        still = True; break
+                if not still: return True
+        except:
+            pass
+        time.sleep(0.25)
+    return clicked
+
+# --- DETECÇÃO DE TELAS (APENAS ELEMENTOS FORNECIDOS) ---
+def _is_tela1(page: Page) -> bool:
+    try:
+        loc = page.get_by_text("Enter Inventory Count:")
+        return loc.count() > 0 and loc.first.is_visible()
+    except:
+        return False
+
+def _is_tela2(page: Page) -> bool:
+    try:
+        loc = page.get_by_text("Items", exact=True)
+        return loc.count() > 0 and loc.first.is_visible()
+    except:
+        return False
+
+def _is_tela3(page: Page) -> bool:
+    try:
+        loc = page.get_by_text("General data")
+        return loc.count() > 0 and loc.first.is_visible()
+    except:
+        return False
+
+def _screen(page: Page) -> str:
+    if _is_tela3(page): return "TELA3"
+    if _is_tela2(page): return "TELA2"
+    if _is_tela1(page): return "TELA1"
+    return "UNKNOWN"
+
+def _wait_screen(page: Page, target: str, timeout_s: float, poll: float = 0.5) -> bool:
+    end = time.time() + timeout_s
+    while time.time() < end:
+        if _screen(page) == target: return True
+        time.sleep(poll)
+    return _screen(page) == target
+
+# --- RECUPERAÇÃO ---
+def _recover_to_tela1(page: Page, doc: str, max_cycles: int = 6) -> bool:
+    for cycle in range(1, max_cycles + 1):
+        st = _screen(page)
+        if st == "TELA1":
+            return True
+        if st in ("TELA2","TELA3"):
+            _click_cancel_once(page)
+            _confirm_exit_yes(page, timeout_s=1.2)
+        else:
+            _confirm_exit_yes(page, timeout_s=1.0)
+        end_fast = time.time() + 1.5
+        while time.time() < end_fast:
+            if _screen(page) == "TELA1": return True
+            time.sleep(0.15)
+    return _screen(page) == "TELA1"
+
+# --- SAVE ---
+def _save_and_confirm(page: Page, timeout_yes_s: float = 5.0) -> bool:
+    if _screen(page) != "TELA2":
+        return False
+    try:
+        btn = page.locator("div").filter(has_text=re.compile(r"^Save$"))
+        if btn.count() == 0:
+            btn = page.get_by_role("button", name=re.compile(r"^Save$", re.I))
+        if btn.count() > 0 and btn.first.is_visible():
+            btn.first.click()
+            log.info("Click Save")
+            _confirm_exit_yes(page, timeout_s=timeout_yes_s)
+            # Poll retorno TELA1 (SAP pode ficar lento)
+            if _wait_screen(page, "TELA1", AFTER_SAVE_WAIT_S, poll=1.0):
+                return True
+            log.warning("Save não retornou TELA1 rápido. Recuperando...")
+            _recover_to_tela1(page, "(save)", max_cycles=6)
+            return _screen(page) == "TELA1"
+    except Exception as e:
+        log.error(f"Erro Save: {e}")
+    return False
+
+# --- TRANSIÇÕES ---
+def _preencher_warehouse(page: Page, value: Optional[str] = None):
+    target = (value or WAREHOUSE_VALUE).strip()
+    if not target: return
+    try:
+        fld = page.get_by_role("textbox", name=re.compile(r"Warehouse Number", re.I))
+        if fld.count() > 0 and fld.first.is_visible():
+            cur = ""
+            try: cur = fld.first.input_value().strip()
+            except: pass
+            if cur.upper() != target.upper():
+                fld.first.click()
+                try: fld.first.press("Control+A")
+                except: pass
+                fld.first.fill(target)
+                log.info(f"Warehouse definido: {target}")
+    except: pass
+
+def _enter_doc(page: Page, doc: str, warehouse: str | None = None) -> bool:
+    if _screen(page) != "TELA1":
+        return False
+    _preencher_warehouse(page, warehouse)
+    try:
+        fld = page.get_by_role("textbox", name=re.compile(r"Number of system inventory", re.I))
+        if fld.count()==0 or not fld.first.is_visible():
+            log.error("Campo inventário não visível.")
+            return False
+        fld.first.click()
+        try: fld.first.press("Control+A")
+        except: pass
+        fld.first.fill(doc)
+        fld.first.press("Enter")
+        log.info(f"[DOC {doc}] Enter enviado.")
+    except Exception as e:
+        log.error(f"[DOC {doc}] Erro ao digitar: {e}")
+        return False
+    return _wait_screen(page, "TELA2", ENTER_WAIT_S, poll=0.5)
+
+def _open_sre(page: Page, doc: str) -> bool:
+    if _screen(page) != "TELA2":
+        log.error(f"[DOC {doc}] Tentou abrir SRE fora da TELA2.")
+        return False
+    try:
+        btn = page.locator("div").filter(has_text=re.compile(r"^Single Record Entry$"))
+        if btn.count()>0 and btn.first.is_visible():
+            btn.first.click()
+            log.info(f"[DOC {doc}] Click SRE.")
+            return _wait_screen(page, "TELA3", SRE_WAIT_S, poll=0.5)
+        log.error(f"[DOC {doc}] Botão SRE não visível.")
+        return False
+    except Exception as e:
+        log.error(f"[DOC {doc}] Erro abrir SRE: {e}")
+        return False
+
+def _first_cancel(page: Page, doc: str) -> bool:
+    if _screen(page) != "TELA3":
+        return _screen(page) == "TELA2"
+    for _ in range(4):
+        _click_cancel_once(page)
+        _confirm_exit_yes(page, timeout_s=1.5)
+        if _wait_screen(page, "TELA2", 3.0, poll=0.5):
+            return True
+    log.error(f"[DOC {doc}] Falha primeiro cancel.")
+    return False
+
+def _second_cancel_or_save(page: Page, doc: str, last: bool) -> bool:
+    if _screen(page) != "TELA2":
+        return _screen(page) == "TELA1"
+    if last:
+        if not _save_and_confirm(page, timeout_yes_s=5.0):
+            log.warning(f"[DOC {doc}] Save falhou → usando Cancel.")
+            last = False
+    if not last:
+        _click_cancel_once(page)
+        _confirm_exit_yes(page, timeout_s=2.5)
+    if _wait_screen(page, "TELA1", 12.0, poll=0.8):
+        return True
+    _recover_to_tela1(page, doc, max_cycles=6)
+    return _screen(page) == "TELA1"
+
+# --- AGRUPAMENTO POR DOC (CSV + TEMPLATE) ---
+def _build_doc_groups(csv_records: List[Dict[str,str]], template_path: Optional[str]) -> Dict[str,List[Dict[str,str]]]:
+    groups: Dict[str,List[Dict[str,str]]] = {}
+    launched_keys = set()
+    # CSV
+    for r in csv_records:
+        doc = str(r.get("doc") or "").strip()
+        if not doc: continue
+        material = _clean_material(r.get("material"))
+        center = str(r.get("center") or "").strip()
+        deposit = str(r.get("deposit") or "").strip()
+        bin_ = str(r.get("bin") or "").strip()
+        qty = str(r.get("quantity") or "0").strip()
+        rec_std = {
+            "inventory_record": doc,
+            "material_number": material,
+            "storage_bin": bin_,
+            "plant": center,
+            "storage_location": deposit,
+            "quantity_alt": qty,
+            "counted_quantity": qty,
+            "allow_blank_material": (material == "")
+        }
+        groups.setdefault(doc, []).append(rec_std)
+        launched_keys.add((doc, center, deposit, bin_, material))
+    # TEMPLATE zeros
+    if template_path:
+        try:
+            import pandas as pd
+            df = pd.read_excel(template_path, engine="openpyxl")
+        except Exception as e:
+            log.warning(f"Falha ler template zeros: {e}")
+            return groups
+        rename = {
+            "Depósito": "Deposito",
+            "Posição no depósito": "PosicaoDeposito",
+            "Tipo de depósito": "TipoDeposito",
+        }
+        for k,v in rename.items():
+            if k in df.columns and v not in df.columns:
+                df = df.rename(columns={k:v})
+        needed = ["DOC","Centro","Deposito","PosicaoDeposito","Material"]
+        for c in needed:
+            if c not in df.columns: df[c]=""
+        added=0
+        for _,row in df.iterrows():
+            doc = str(row.get("DOC") or "").strip()
+            if not doc: continue
+            center = str(row.get("Centro") or "").strip()
+            deposit = str(row.get("Deposito") or "").strip()
+            bin_ = str(row.get("PosicaoDeposito") or "").strip()
+            material = _clean_material(row.get("Material"))
+            if not (center and deposit): continue
+            key = (doc, center, deposit, bin_, material)
+            if key in launched_keys: continue
+            groups.setdefault(doc, []).append({
+                "inventory_record": doc,
+                "material_number": material,
+                "storage_bin": bin_,
+                "plant": center,
+                "storage_location": deposit,
+                "quantity_alt": "0",
+                "counted_quantity": "0",
+                "allow_blank_material": (material == "")
+            })
+            launched_keys.add(key); added += 1
+        log.info(f"Zero registros adicionados: {added}")
+    return groups
+
+def _mark_last(groups: Dict[str, List[Dict[str, str]]]):  # FIX: parêntese faltante (erro linha 1205)
+    for doc, lst in groups.items():
+        for i,r in enumerate(lst):
+            r["__last_in_doc__"] = (i == len(lst)-1)
+
+# --- PROCESSO PRINCIPAL ---
+def process_single_record_entries(page: Page,
+                                  reference_report_path: str,
+                                  records: List[Dict[str,str]]):
+    if not records:
+        log.warning("Sem registros CSV.")
+        return
+    groups = _build_doc_groups(records, reference_report_path)
+    _mark_last(groups)
+    ordered_docs=[]
+    seen=set()
+    for r in records:
+        d=str(r.get("doc") or "").strip()
+        if d and d not in seen and d in groups:
+            ordered_docs.append(d); seen.add(d)
+    for d in groups:
+        if d not in seen: ordered_docs.append(d)
+    total_all = sum(len(v) for v in groups.values())
+    log.info(f"Total registros consolidados: {total_all} DOCs={len(groups)}")
+    processed=0
+    for doc in ordered_docs:
+        lst=groups[doc]
+        for local_idx, rec in enumerate(lst, start=1):
+            processed += 1
+            _process_single_record(page, rec, processed, total_all,
+                                   seq_info=f"DOC {doc} {local_idx}/{len(lst)}",
+                                   is_last_in_doc=rec["__last_in_doc__"])
+    log.info("Processamento completo.")
+
+# --- PROCESSO DE UM REGISTRO ---
+def _process_single_record(page: Page, rec: Dict[str,str], idx: int, total: int,
+                           seq_info: Optional[str]=None, is_last_in_doc: bool=False):
+    inv = rec.get("inventory_record","").strip()
+    bin_ = rec.get("storage_bin","").strip()
+    plant = rec.get("plant","").strip()
+    depo = rec.get("storage_location","").strip()
+    mat = rec.get("material_number","").strip()
+    allow_blank = rec.get("allow_blank_material", False)
+    if not inv or not bin_ or not plant or not depo or (not mat and not allow_blank):
+        log.warning(f"[Registro {idx}/{total}] Campos inválidos DOC={inv} BIN={bin_} MAT={mat or '<VAZIO>'}")
+        return
+    tag = f"[Registro {idx}/{total}]{'['+seq_info+']' if seq_info else ''}"
+    qty_raw = rec.get("quantity_alt") or rec.get("counted_quantity") or "0"
+    zero_flag = str(qty_raw).strip() in ("","0","0.0","0,0")
+    log.info(f"{tag} INICIO DOC={inv} BIN={bin_} MAT={mat or '<VAZIO>'} QTD={qty_raw} ZERO={zero_flag} LAST={is_last_in_doc}")
+
+    # TELA1 -> TELA2
+    if _screen(page) != "TELA1":
+        _recover_to_tela1(page, inv, max_cycles=6)
+    if not _enter_doc(page, inv, warehouse=None):
+        log.error(f"{tag} Falha TELA1->TELA2.")
+        return
+
+    # TELA2 -> TELA3
+    if not _open_sre(page, inv):
+        log.error(f"{tag} Falha abrir SRE.")
+        return
+    if _screen(page) != "TELA3":
+        log.error(f"{tag} Não chegou TELA3.")
+        return
+
+    # Preencher TELA3
+    _fill_field(page, "Storage Bin", bin_)
+    if mat:
+        _fill_field(page, "Material Number", _clean_material(mat))
+    _fill_field(page, "Counted quantity in alternative unit of measure", _format_quantity(_parse_number(qty_raw)))
+    if zero_flag:
+        try:
+            zs = page.get_by_text("Zero stock")
+            if zs.count()>0 and zs.first.is_visible():
+                zs.first.click()
+                log.info(f"{tag} Zero stock marcado.")
+        except: pass
+    _fill_field(page, "Storage Location", depo)
+    _fill_field(page, "Plant", plant)
+    try:
+        qf = page.get_by_role("textbox", name="Counted quantity in alternative unit of measure")
+        if qf.count()>0:
+            qf.first.press("Enter"); time.sleep(0.12)
+            qf.first.press("Enter"); time.sleep(0.12)
+    except: pass
+
+    # Primeiro cancel
+    if not _first_cancel(page, inv):
+        log.error(f"{tag} Falha TELA3->TELA2.")
+        return
+    if _screen(page) != "TELA2":
+        log.error(f"{tag} Não está TELA2 após primeiro cancel.")
+        return
+
+    # Segundo cancel ou save
+    if not _second_cancel_or_save(page, inv, is_last_in_doc):
+        log.error(f"{tag} Falha finalizar DOC.")
+        return
+    if _screen(page) != "TELA1":
+        log.error(f"{tag} Não voltou TELA1.")
+        return
+
+    log.info(f"{tag} OK DOC={inv}")
+
+def _clean_material(val: Optional[str]) -> str:
+    """
+    Normaliza material:
+      - None/''/'nan' -> ''
+      - Remove espaços
+      - Mantém letras e dígitos como estão (sem zero padding)
+    """
+    if val is None:
+        return ""
+    s = str(val).strip()
+    if not s or s.lower() == "nan":
+        return ""
+    return s
+
+__all__ = ["process_single_record_entries"]
